@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/* =========================================================
+   BASE LAYOUT MOTIF
+========================================================= */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #050505;
+    /* Hardware accelerated text smoothing mechanics */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background: #050505;
+    color: #ffffff;
+    overflow-x: hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Unified Premium Color Highlighting */
+  ::selection {
+    background: #FF453A;
+    color: #ffffff;
+  }
+
+  h1 {
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 0.85;
+  }
+
+  h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #FF453A;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+/* =========================================================
+   COMPONENTS UTILITIES MAPPING
+========================================================= */
+@layer components {
+  .layout-container {
+    width: 100%;
+    max-width: 1600px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  .section-spacing {
+    padding-block: 6rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    background: #FF453A;
+    color: #ffffff;
+    border-radius: 9999px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8125rem;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 12px 32px rgba(255, 69, 58, 0.15);
+  }
+
+  .btn-primary:hover {
+    background: #e03b32;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(255, 69, 58, 0.25);
+  }
+  
+  .btn-primary:active {
+    transform: translateY(0px);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN SYSTEM OVERRIDES
+========================================================= */
+@media (min-width: 768px) {
+  .layout-container {
+    padding-inline: 3rem;
+  }
+
+  .section-spacing {
+    padding-block: 10rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .layout-container {
+    padding-inline: 6rem;
+  }
+}
+
+/* =========================================================
+   UTILITIES & VISUAL FX SYSTEMS
+========================================================= */
+@layer utilities {
+  .stroke-text {
+    color: transparent !important;
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.85);
+    paint-order: stroke fill;
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #a1a1aa 50%,
+      #3f3f46 100__
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: center top;
+  }
+
+  .hide-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
