@@ -1,11 +1,14 @@
 import React, { memo, useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 
-// Configuration object with your asset path
+// =========================================================
+// ⚙️ HERO CONFIGURATION
+// =========================================================
 const HERO_CONFIG = {
-  photoSrc: "/hero.jpg", // Make sure this file is placed in your public/ folder
-  resumeUrl: "/resume.pdf",
-  projectsAnchor: "#projects",
+  photoSrc: "/images/hero.jpg", 
+  videoBgSrc: "/videos/hero-bg-loop.mp4", // ✨ Your new atmospheric background video
+  resumeUrl: "/resume/Praveen_S_Resume.pdf", 
+  workExternalUrl: "https://www.behance.net/praveenpatriot", 
 };
 
 const STAGGER_VARIANTS = {
@@ -121,7 +124,6 @@ export default function Hero() {
 
   return (
     <>
-      {/* SCOPED STYLE REGISTRY TO FIX INTERSECTING TEXT STROKES */}
       <style dangerouslySetInnerHTML={{__html: `
         .custom-stroke-red {
           color: #FF453A !important;
@@ -148,15 +150,26 @@ export default function Hero() {
         className="relative min-h-screen w-full overflow-hidden bg-[#050505] flex items-center select-none py-28 lg:py-0"
         aria-label="Creative Visual Designer Portfolio Hero"
       >
-        {/* Background Lighting Systems */}
+        {/* ✨ NEW: Cinematic Background Video Layer ✨ */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity"
+          >
+            <source src={HERO_CONFIG.videoBgSrc} type="video/mp4" />
+          </video>
+        </div>
+
+        {/* Existing Radial Gradients acting as an overlay/color grade */}
         <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_75%_45%,rgba(255,69,58,0.1),transparent_60%)] mix-blend-screen" />
         <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.02),transparent_48%)]" />
 
-        {/* Main Structural Layout Wrapper */}
         <div className="relative z-10 w-full max-w-[1600px] mx-auto px-10 md:px-12 xl:px-24">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-12">
             
-            {/* LEFT CONTENT COLUMN */}
             <motion.div
               variants={STAGGER_VARIANTS}
               initial="hidden"
@@ -170,7 +183,6 @@ export default function Hero() {
                 </span>
               </motion.div>
 
-              {/* OUTLINE TYPOGRAPHY TREE */}
               <motion.h1
                 variants={ELEMENT_VARIANTS}
                 custom={shouldReduceMotion}
@@ -179,11 +191,9 @@ export default function Hero() {
                 <span className="block text-white text-[56px] sm:text-[72px] md:text-[84px] xl:text-[96px]">
                   CREATIVE
                 </span>
-                
                 <span className="custom-stroke-red block text-[56px] sm:text-[72px] md:text-[84px] xl:text-[96px] tracking-[0.01em]">
                   VISUAL
                 </span>
-
                 <span className="custom-stroke-white block text-[56px] sm:text-[72px] md:text-[84px] xl:text-[96px] tracking-[0.01em]">
                   DESIGNER
                 </span>
@@ -202,26 +212,28 @@ export default function Hero() {
 
               <motion.div variants={ELEMENT_VARIANTS} custom={shouldReduceMotion} className="flex flex-wrap gap-4 sm:gap-6 mt-12 w-full sm:w-auto">
                 <motion.a
-                  href={HERO_CONFIG.projectsAnchor}
+                  href={HERO_CONFIG.workExternalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={shouldReduceMotion ? {} : { scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto text-center px-10 py-4 rounded-full bg-white text-black font-bold text-[14px] tracking-[0.2em] shadow-[0_12px_32px_rgba(255,255,255,0.06)] transition-all duration-300"
+                  className="w-full sm:w-auto inline-flex items-center justify-center text-center px-10 py-4 rounded-full bg-white text-black font-bold text-[14px] tracking-[0.2em] shadow-[0_12px_32px_rgba(255,255,255,0.06)] transition-all duration-300 min-h-[48px] cursor-pointer"
                 >
                   VIEW WORK
                 </motion.a>
 
                 <motion.a
                   href={HERO_CONFIG.resumeUrl}
+                  download="Praveen_S_Resume.pdf"
                   whileHover={shouldReduceMotion ? {} : { scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto text-center px-10 py-4 rounded-full border border-[rgba(255,255,255,0.2)] text-white font-bold text-[14px] tracking-[0.2em] hover:border-[#FF453A] hover:bg-[rgba(255,69,58,0.08)] transition-all duration-300"
+                  className="w-full sm:w-auto inline-flex items-center justify-center text-center px-10 py-4 rounded-full border border-[rgba(255,255,255,0.2)] text-white font-bold text-[14px] tracking-[0.2em] hover:border-[#FF453A] hover:bg-[rgba(255,69,58,0.08)] transition-all duration-300 min-h-[48px] cursor-pointer"
                 >
                   DOWNLOAD RESUME
                 </motion.a>
               </motion.div>
             </motion.div>
 
-            {/* RIGHT GRAPHICS COLUMN */}
             <motion.div
               style={{ x: dynamicSpringX, y: dynamicSpringY }}
               className="relative flex items-center justify-center h-auto md:h-[620px] w-full lg:w-[600px] xl:ml-auto flex-shrink-0 overflow-visible will-change-transform mt-12 lg:mt-0 lg:pt-28"
@@ -230,36 +242,35 @@ export default function Hero() {
                 
                 <div className="absolute inset-0 m-auto w-[300px] h-[300px] rounded-full bg-[#FF453A]/5 blur-[80px] pointer-events-none mix-blend-screen hidden md:block" />
 
-                {/* Concentric Vector Display Loops */}
                 <motion.div
                   animate={{ rotate: shouldReduceMotion ? 0 : 360 }}
                   transition={ringSpinTransition(160)}
                   className="absolute w-[540px] h-[540px] rounded-full border border-white/[0.03] pointer-events-none hidden md:block"
                 />
-
                 <motion.div
                   animate={{ rotate: shouldReduceMotion ? 0 : -360 }}
                   transition={ringSpinTransition(120)}
                   className="absolute w-[440px] h-[440px] rounded-full border border-white/[0.05] pointer-events-none hidden md:block"
                 />
-
                 <motion.div
                   animate={{ rotate: shouldReduceMotion ? 0 : 360 }}
                   transition={ringSpinTransition(90)}
                   className="absolute w-[340px] h-[340px] rounded-full border border-[#FF453A]/15 pointer-events-none hidden md:block"
                 />
 
-                {/* Central Circle Frame Core */}
                 <motion.div
                   animate={{ y: shouldReduceMotion ? 0 : [0, -10, 0] }}
                   transition={shouldReduceMotion ? { duration: 0 } : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   className="relative md:absolute order-first md:order-none z-20 w-[280px] h-[280px] rounded-full border border-[#FF453A]/25 bg-black backdrop-blur-3xl shadow-[0_0_64px_rgba(255,69,58,0.15)] flex flex-col items-center justify-center overflow-hidden mb-6 md:mb-0"
                 >
-                  {/* Swapped background div for a solid HTML image tag */}
                   <img
                     src={HERO_CONFIG.photoSrc}
                     alt="Praveen S. Portrait"
-                    className="absolute inset-0 h-full w-full object-cover object-center transition-all duration-700"
+                    className="absolute inset-0 h-full w-full object-cover object-[center_top_35%] transition-all duration-700 select-none pointer-events-none"
+                    style={{
+                      imageRendering: "-webkit-optimize-contrast",
+                      transform: "translateZ(0)",
+                    }}
                   />
                   
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-8 flex flex-col items-center pointer-events-none z-10">
@@ -272,7 +283,6 @@ export default function Hero() {
                   </div>
                 </motion.div>
 
-                {/* Secure Geometric Data Nodes Mapping */}
                 {STATS_CARDS_MAP.map((stat) => (
                   <FloatingStatCard
                     key={stat.label}
@@ -298,7 +308,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* FLOATING MOUSE SCROLL ENGINE INDICATOR */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
