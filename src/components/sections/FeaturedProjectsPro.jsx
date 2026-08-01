@@ -2,31 +2,33 @@ import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export default function FeaturedProjectsPro() {
   const targetRef = useRef(null);
   const triggerRef = useRef(null);
 
   useEffect(() => {
-    const pin = gsap.fromTo(
-      targetRef.current,
-      { x: 0 },
-      {
-        x: "-400vw", 
-        ease: "none",
-        scrollTrigger: {
-          trigger: triggerRef.current,
-          start: "top top",
-          end: "+=3500", 
-          scrub: 0.6,
-          pin: true,
-          invalidateOnRefresh: true,
-        },
-      }
-    );
+    const ctx = gsap.context(() => {
+      const pin = gsap.fromTo(
+        targetRef.current,
+        { x: 0 },
+        {
+          x: "-400vw",
+          ease: "none",
+          scrollTrigger: {
+            trigger: triggerRef.current,
+            start: "top top",
+            end: "+=3500",
+            scrub: 0.6,
+            pin: true,
+            invalidateOnRefresh: true,
+          },
+        }
+      );
+    }, triggerRef);
 
-    return () => {
-      if (pin.scrollTrigger) pin.scrollTrigger.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   const projects = [
@@ -63,13 +65,13 @@ export default function FeaturedProjectsPro() {
   return (
     <div ref={triggerRef} className="relative bg-[#050505]">
       <div className="overflow-hidden relative h-screen w-full">
-        
-        <div 
-          ref={targetRef} 
+
+        <div
+          ref={targetRef}
           className="flex flex-row relative h-full items-center will-change-transform"
           style={{ width: "500vw" }}
         >
-          
+
           {/* PANEL 1: Intro Splash Frame */}
           <section className="w-screen h-full flex flex-col justify-center px-10 md:px-16 lg:px-24 bg-[#050505] relative z-10 shrink-0 select-none">
             <div className="max-w-4xl w-full mx-auto text-left">
@@ -79,14 +81,12 @@ export default function FeaturedProjectsPro() {
                 </h2>
                 <span className="w-8 h-px bg-[#FF453A] opacity-60" />
               </div>
-              
+
               <h3 className="text-[56px] sm:text-[72px] md:text-[90px] font-black tracking-tighter uppercase leading-[0.95] mb-8 whitespace-nowrap">
                 SELECTED <br />
-                {/* 🛠️ FIX: Replaced WebkitTextStroke with a sharp multi-directional drop shadow matrix */}
-                {/* This completely flattens the font vector lines and eliminates overlapping artifacts */}
-                <span 
-                  className="text-[#050505] tracking-tighter" 
-                  style={{ 
+                <span
+                  className="text-[#050505] tracking-tighter"
+                  style={{
                     textShadow: `
                       -1px -1px 0 rgba(255, 255, 255, 0.25),  
                        1px -1px 0 rgba(255, 255, 255, 0.25),
@@ -98,11 +98,11 @@ export default function FeaturedProjectsPro() {
                   WORKS
                 </span>
               </h3>
-              
+
               <p className="text-zinc-400 text-[16px] max-w-sm font-normal leading-relaxed antialiased">
                 A highly curated digital playground containing commercial motion designs, environment builds, and intricate VFX composites.
               </p>
-              
+
               <div className="mt-16 text-zinc-600 font-bold text-[11px] tracking-[0.25em] flex items-center gap-2">
                 SCROLL DOWN TO EXPLORE <span className="animate-pulse">→</span>
               </div>
@@ -111,17 +111,17 @@ export default function FeaturedProjectsPro() {
 
           {/* PANELS 2-5: The Project Showcase Cards */}
           {projects.map((project) => (
-            <section 
-              key={project.id} 
+            <section
+              key={project.id}
               className="w-screen h-full flex items-center justify-center bg-[#050505] shrink-0 px-10 md:px-16 lg:px-24"
             >
               <div className="w-full max-w-[1300px] max-h-[75vh] grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center bg-zinc-950/20 border border-white/[0.03] p-8 md:p-10 rounded-2xl group relative overflow-hidden backdrop-blur-sm">
-                
+
                 {/* Visual Media Showcase Frame */}
                 <div className="col-span-1 md:col-span-7 h-full w-full min-h-[250px] md:min-h-[400px] overflow-hidden rounded-xl bg-zinc-900 border border-white/[0.05] relative shadow-2xl">
-                  <img 
-                    src={project.img} 
-                    alt={project.title} 
+                  <img
+                    src={project.img}
+                    alt={project.title}
                     className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-[1s] ease-[0.16,1,0.3,1]"
                     loading="lazy"
                   />
@@ -135,17 +135,17 @@ export default function FeaturedProjectsPro() {
                   <span className="text-[11px] font-bold text-[#FF453A] tracking-[0.25em] uppercase block mb-4">
                     {project.category}
                   </span>
-                  
+
                   <h4 className="text-[28px] md:text-[38px] lg:text-[44px] font-black tracking-tight leading-none text-white mb-6 group-hover:text-[#FF453A] transition-colors duration-300 uppercase">
                     {project.title}
                   </h4>
-                  
+
                   <div className="inline-block border border-white/10 rounded-md px-3 py-1 bg-white/[0.02] text-[11px] text-zinc-400 font-mono tracking-wider mb-10">
                     {project.tag}
                   </div>
-                  
+
                   <button className="flex items-center gap-3 text-[11px] font-bold tracking-[0.2em] text-zinc-400 group-hover:text-white transition-colors duration-300 uppercase bg-transparent border-none cursor-pointer p-0">
-                    VIEW BREAKDOWN 
+                    VIEW BREAKDOWN
                     <span className="transform group-hover:translate-x-1.5 transition-transform duration-300 text-[#FF453A]">→</span>
                   </button>
                 </div>

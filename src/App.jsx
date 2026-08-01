@@ -20,8 +20,6 @@ const FeaturedProjects = lazy(() =>
   import("./components/sections/FeaturedProjectsPro")
 );
 
-// const About = lazy(() => import("./components/sections/About"));
-
 const Impact = lazy(() => import("./components/sections/Impact"));
 const Experience = lazy(() => import("./components/sections/Experience"));
 const Skills = lazy(() => import("./components/sections/Skills"));
@@ -68,7 +66,6 @@ export default function App() {
         <Suspense fallback={<Loading />}>
           <Showreel />
           <FeaturedProjects />
-          {/* <About /> */}
           <Impact />
           <Experience />
           <Skills />

@@ -6,7 +6,7 @@ import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-moti
 // =========================================================
 const HERO_CONFIG = {
   photoSrc: "/images/hero.jpg", 
-  videoBgSrc: "/videos/hero-bg-loop.mp4", // ✨ Your new atmospheric background video
+  videoBgSrc: "/videos/hero-bg-loop.mp4", 
   resumeUrl: "/resume/Praveen_S_Resume.pdf", 
   workExternalUrl: "https://www.behance.net/praveenpatriot", 
 };
@@ -150,7 +150,6 @@ export default function Hero() {
         className="relative min-h-screen w-full overflow-hidden bg-[#050505] flex items-center select-none py-28 lg:py-0"
         aria-label="Creative Visual Designer Portfolio Hero"
       >
-        {/* ✨ NEW: Cinematic Background Video Layer ✨ */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <video
             autoPlay
@@ -163,7 +162,6 @@ export default function Hero() {
           </video>
         </div>
 
-        {/* Existing Radial Gradients acting as an overlay/color grade */}
         <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_75%_45%,rgba(255,69,58,0.1),transparent_60%)] mix-blend-screen" />
         <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,0.02),transparent_48%)]" />
 
