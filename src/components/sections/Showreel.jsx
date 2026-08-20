@@ -41,6 +41,7 @@ export default function Showreel() {
       playing: playing1,
       setPlaying: setPlaying1,
       src: "/videos/showreel.mp4",
+      mediaClass: "origin-left scale-[1.78] group-hover:scale-[1.82]",
     },
     {
       title: "Video Editing",
@@ -48,6 +49,7 @@ export default function Showreel() {
       playing: playing2,
       setPlaying: setPlaying2,
       src: "/videos/Video_Editor.mp4",
+      mediaClass: "group-hover:scale-[1.02]",
     },
   ];
 
@@ -97,7 +99,7 @@ export default function Showreel() {
               <div className="relative aspect-video overflow-hidden rounded-[20px] border border-white/10 bg-black">
                 <video
                   src={reel.src}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  className={`h-full w-full object-cover transition-transform duration-700 ${reel.mediaClass}`}
                   autoPlay
                   muted
                   loop
