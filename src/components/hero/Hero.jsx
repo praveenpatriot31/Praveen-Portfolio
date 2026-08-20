@@ -5,10 +5,10 @@ import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-moti
 // ⚙️ HERO CONFIGURATION
 // =========================================================
 const HERO_CONFIG = {
-  photoSrc: "/images/hero.jpg", 
-  videoBgSrc: "/videos/hero-bg-loop.mp4", 
-  resumeUrl: "/resume/Praveen_S_Resume.pdf", 
-  workExternalUrl: "https://www.behance.net/praveenpatriot", 
+  photoSrc: "/images/hero.jpg",
+  videoBgSrc: "/videos/hero-bg-loop.mp4",
+  resumeUrl: "/resume/Praveen_S_Resume.pdf",
+  workExternalUrl: "https://www.behance.net/praveenpatriot",
 };
 
 const STAGGER_VARIANTS = {
@@ -22,9 +22,9 @@ const STAGGER_VARIANTS = {
 };
 
 const ELEMENT_VARIANTS = {
-  hidden: (shouldReduceMotion) => ({ 
-    opacity: 0, 
-    y: shouldReduceMotion ? 0 : 24 
+  hidden: (shouldReduceMotion) => ({
+    opacity: 0,
+    y: shouldReduceMotion ? 0 : 24,
   }),
   show: {
     opacity: 1,
@@ -37,65 +37,97 @@ const ELEMENT_VARIANTS = {
 };
 
 const STATS_CARDS_MAP = [
-  { value: "5+", label: "Years Experience", transformClass: "md:-translate-x-[270px] md:-translate-y-[190px] lg:-translate-x-[290px] lg:-translate-y-[210px]", phaseShift: 0 },
-  { value: "100+", label: "Projects Delivered", transformClass: "md:translate-x-[50px] md:-translate-y-[190px] lg:translate-x-[70px] lg:-translate-y-[210px]", phaseShift: 1 },
-  { value: "30+", label: "Brands Supported", transformClass: "md:translate-x-[70px] md:translate-y-[90px] lg:translate-x-[90px] lg:translate-y-[110px]", phaseShift: 2 },
+  {
+    value: "5+",
+    label: "Years Experience",
+    transformClass:
+      "md:-translate-x-[250px] md:-translate-y-[175px] lg:-translate-x-[265px] lg:-translate-y-[190px]",
+    phaseShift: 0,
+  },
+  {
+    value: "100+",
+    label: "Projects Delivered",
+    transformClass:
+      "md:translate-x-[45px] md:-translate-y-[175px] lg:translate-x-[55px] lg:-translate-y-[190px]",
+    phaseShift: 1,
+  },
+  {
+    value: "30+",
+    label: "Brands Supported",
+    transformClass:
+      "md:translate-x-[55px] md:translate-y-[80px] lg:translate-x-[70px] lg:translate-y-[95px]",
+    phaseShift: 2,
+  },
 ];
 
 const AVAILABILITY_CARD_MAP = {
   value: "Open",
   label: "Immediate Joiner",
-  transformClass: "md:-translate-x-[250px] md:translate-y-[90px] lg:-translate-x-[270px] lg:translate-y-[110px]",
+  transformClass:
+    "md:-translate-x-[230px] md:translate-y-[80px] lg:-translate-x-[245px] lg:translate-y-[95px]",
 };
 
-const FloatingStatCard = memo(({ value, label, transformClass, phaseShift, isStatus, shouldReduceMotion }) => {
-  const dynamicYAnimation = shouldReduceMotion ? [0, 0] : [0, -12, 0];
-  
-  return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
-      animate={{
-        opacity: 1,
-        scale: 1,
-        y: dynamicYAnimation,
-      }}
-      transition={{
-        delay: 0.4 + (phaseShift * 0.15),
-        duration: 0.8,
-        y: shouldReduceMotion
-          ? { duration: 0 }
-          : {
-              repeat: Infinity,
-              duration: 6 + (phaseShift * 0.5),
-              ease: "easeInOut",
-            },
-      }}
-      whileHover={shouldReduceMotion ? {} : { scale: 1.02, y: -4, transition: { duration: 0.2 } }}
-      className={`relative md:absolute top-auto left-auto md:top-1/2 md:left-1/2 ${transformClass} z-30 min-w-[210px] rounded-[24px] p-5 backdrop-blur-2xl select-none will-change-transform shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6)] border ${
-        isStatus 
-          ? "bg-[rgba(255,69,58,0.04)] border-[rgba(255,69,58,0.2)] shadow-[0_24px_48px_-12px_rgba(255,69,58,0.1)]" 
-          : "bg-[rgba(255,255,255,0.04)] border-[rgba(255,255,255,0.08)]"
-      }`}
-    >
-      <div className="flex items-center gap-3">
-        {isStatus && (
-          <span className="relative flex h-2.5 w-2.5">
-            {!shouldReduceMotion && (
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FF453A] opacity-75" />
-            )}
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#FF453A]" />
-          </span>
-        )}
-        <h3 className="text-[32px] font-black text-white tracking-tight leading-none">
-          {value}
-        </h3>
-      </div>
-      <p className="mt-2.5 text-[13px] uppercase tracking-[0.2em] text-[#B8B8B8] font-medium leading-none">
-        {label}
-      </p>
-    </motion.div>
-  );
-});
+const FloatingStatCard = memo(
+  ({ value, label, transformClass, phaseShift, isStatus, shouldReduceMotion }) => {
+    const dynamicYAnimation = shouldReduceMotion ? [0, 0] : [0, -12, 0];
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          y: dynamicYAnimation,
+        }}
+        transition={{
+          delay: 0.4 + phaseShift * 0.15,
+          duration: 0.8,
+          y: shouldReduceMotion
+            ? { duration: 0 }
+            : {
+                repeat: Infinity,
+                duration: 6 + phaseShift * 0.5,
+                ease: "easeInOut",
+              },
+        }}
+        whileHover={
+          shouldReduceMotion
+            ? {}
+            : {
+                scale: 1.02,
+                y: -4,
+                transition: { duration: 0.2 },
+              }
+        }
+        className={`relative md:absolute top-auto left-auto md:top-1/2 md:left-1/2 ${transformClass} z-30 min-w-[180px] rounded-[20px] p-4 backdrop-blur-2xl select-none will-change-transform shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6)] border ${
+          isStatus
+            ? "bg-[rgba(255,69,58,0.04)] border-[rgba(255,69,58,0.2)] shadow-[0_24px_48px_-12px_rgba(255,69,58,0.1)]"
+            : "bg-[rgba(255,255,255,0.04)] border-[rgba(255,255,255,0.08)]"
+        }`}
+      >
+        <div className="flex items-center gap-3">
+          {isStatus && (
+            <span className="relative flex h-2.5 w-2.5">
+              {!shouldReduceMotion && (
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#FF453A] opacity-75" />
+              )}
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#FF453A]" />
+            </span>
+          )}
+
+          <h3 className="text-[28px] font-black text-white tracking-tight leading-none">
+            {value}
+          </h3>
+        </div>
+
+        <p className="mt-2.5 text-[11px] uppercase tracking-[0.18em] text-[#B8B8B8] font-medium leading-none">
+          {label}
+        </p>
+      </motion.div>
+    );
+  }
+);
+
 FloatingStatCard.displayName = "FloatingStatCard";
 
 export default function Hero() {
@@ -105,8 +137,15 @@ export default function Hero() {
   const mouseInputX = useMotionValue(0);
   const mouseInputY = useMotionValue(0);
 
-  const dynamicSpringX = useSpring(mouseInputX, { stiffness: 40, damping: 24 });
-  const dynamicSpringY = useSpring(mouseInputY, { stiffness: 40, damping: 24 });
+  const dynamicSpringX = useSpring(mouseInputX, {
+    stiffness: 40,
+    damping: 24,
+  });
+
+  const dynamicSpringY = useSpring(mouseInputY, {
+    stiffness: 40,
+    damping: 24,
+  });
 
   useEffect(() => {
     setIsMounted(true);
@@ -114,36 +153,44 @@ export default function Hero() {
 
   const handleMouseMovePerspective = (e) => {
     if (shouldReduceMotion || !isMounted) return;
+
     const { innerWidth, innerHeight } = window;
+
     mouseInputX.set((e.clientX - innerWidth / 2) / 36);
     mouseInputY.set((e.clientY - innerHeight / 2) / 36);
   };
 
   const ringSpinTransition = (duration) =>
-    shouldReduceMotion ? { duration: 0 } : { duration, repeat: Infinity, ease: "linear" };
+    shouldReduceMotion
+      ? { duration: 0 }
+      : { duration, repeat: Infinity, ease: "linear" };
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{__html: `
-        .custom-stroke-red {
-          color: #FF453A !important;
-          -webkit-text-fill-color: #050505 !important;
-          text-shadow: 
-            -1.5px -1.5px 0 #FF453A,  
-             1.5px -1.5px 0 #FF453A,
-            -1.5px  1.5px 0 #FF453A,
-             1.5px  1.5px 0 #FF453A;
-        }
-        .custom-stroke-white {
-          color: rgba(255, 255, 255, 0.95) !important;
-          -webkit-text-fill-color: #050505 !important;
-          text-shadow: 
-            -1.5px -1.5px 0 rgba(255, 255, 255, 0.95),  
-             1.5px -1.5px 0 rgba(255, 255, 255, 0.95),
-            -1.5px  1.5px 0 rgba(255, 255, 255, 0.95),
-             1.5px  1.5px 0 rgba(255, 255, 255, 0.95);
-        }
-      `}} />
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .custom-stroke-red {
+              color: #FF453A !important;
+              -webkit-text-fill-color: #050505 !important;
+              text-shadow:
+                -1.5px -1.5px 0 #FF453A,
+                 1.5px -1.5px 0 #FF453A,
+                -1.5px  1.5px 0 #FF453A,
+                 1.5px  1.5px 0 #FF453A;
+            }
+            .custom-stroke-white {
+              color: rgba(255, 255, 255, 0.95) !important;
+              -webkit-text-fill-color: #050505 !important;
+              text-shadow:
+                -1.5px -1.5px 0 rgba(255, 255, 255, 0.95),
+                 1.5px -1.5px 0 rgba(255, 255, 255, 0.95),
+                -1.5px  1.5px 0 rgba(255, 255, 255, 0.95),
+                 1.5px  1.5px 0 rgba(255, 255, 255, 0.95);
+            }
+          `,
+        }}
+      />
 
       <section
         onMouseMove={handleMouseMovePerspective}
@@ -167,32 +214,35 @@ export default function Hero() {
 
         <div className="relative z-10 w-full max-w-[1600px] mx-auto px-10 md:px-12 xl:px-24">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-20 lg:gap-12">
-            
             <motion.div
               variants={STAGGER_VARIANTS}
               initial="hidden"
               animate="show"
-              className="relative max-w-[660px] w-full flex flex-col items-start text-left min-w-0 lg:pt-28"
+              className="relative max-w-[650px] w-full flex flex-col items-start text-left min-w-0 lg:pt-24"
             >
-              <motion.div variants={ELEMENT_VARIANTS} custom={shouldReduceMotion} className="flex items-center gap-4 mb-6">
+              <motion.div
+                variants={ELEMENT_VARIANTS}
+                custom={shouldReduceMotion}
+                className="flex items-center gap-4 mb-6"
+              >
                 <div className="w-16 h-px bg-[#FF453A]" aria-hidden="true" />
-                <span className="uppercase tracking-[0.35em] text-[#FF453A] text-[14px] font-bold">
-                  Introduction
+                <span className="uppercase tracking-[0.32em] text-[#FF453A] text-[12px] font-bold">
+                  INTRODUCTION
                 </span>
               </motion.div>
 
               <motion.h1
                 variants={ELEMENT_VARIANTS}
                 custom={shouldReduceMotion}
-                className="font-black tracking-tight text-left w-full select-none flex flex-col leading-[0.85] gap-1 md:gap-2"
+                className="font-black tracking-[-0.045em] text-left w-full select-none flex flex-col leading-[0.82] gap-0"
               >
-                <span className="block text-white text-[56px] sm:text-[72px] md:text-[84px] xl:text-[96px]">
+                <span className="block text-white text-[56px] sm:text-[72px] md:text-[84px] xl:text-[104px]">
                   CREATIVE
                 </span>
-                <span className="custom-stroke-red block text-[56px] sm:text-[72px] md:text-[84px] xl:text-[96px] tracking-[0.01em]">
+                <span className="custom-stroke-red block text-[56px] sm:text-[72px] md:text-[84px] xl:text-[104px] tracking-[0.01em]">
                   VISUAL
                 </span>
-                <span className="custom-stroke-white block text-[56px] sm:text-[72px] md:text-[84px] xl:text-[96px] tracking-[0.01em]">
+                <span className="custom-stroke-white block text-[56px] sm:text-[72px] md:text-[84px] xl:text-[104px] tracking-[0.01em]">
                   DESIGNER
                 </span>
               </motion.h1>
@@ -200,22 +250,27 @@ export default function Hero() {
               <motion.p
                 variants={ELEMENT_VARIANTS}
                 custom={shouldReduceMotion}
-                className="mt-8 max-w-[540px] text-[#B8B8B8] text-[18px] font-normal leading-relaxed tracking-normal antialiased"
+                className="mt-7 max-w-[500px] text-[#B8B8B8] text-[17px] font-normal leading-[1.7] tracking-normal antialiased"
               >
-                I craft premium digital experiences through visual design,
-                branding, motion graphics, VFX compositing, video editing,
-                and AI-powered creative workflows that help companies
-                build stronger visual identities.
+                Creative Visual Designer with 5+ years of experience across
+                visual design, brand campaigns, motion graphics, video,
+                VFX compositing, and AI-assisted creative workflows.
+                Experienced in end-to-end project execution with
+                international stakeholders and Singapore-based clients.
               </motion.p>
 
-              <motion.div variants={ELEMENT_VARIANTS} custom={shouldReduceMotion} className="flex flex-wrap gap-4 sm:gap-6 mt-12 w-full sm:w-auto">
+              <motion.div
+                variants={ELEMENT_VARIANTS}
+                custom={shouldReduceMotion}
+                className="flex flex-wrap gap-4 sm:gap-6 mt-10 w-full sm:w-auto"
+              >
                 <motion.a
                   href={HERO_CONFIG.workExternalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={shouldReduceMotion ? {} : { scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto inline-flex items-center justify-center text-center px-10 py-4 rounded-full bg-white text-black font-bold text-[14px] tracking-[0.2em] shadow-[0_12px_32px_rgba(255,255,255,0.06)] transition-all duration-300 min-h-[48px] cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center text-center px-9 py-3.5 rounded-full bg-white text-black font-bold text-[14px] tracking-[0.2em] shadow-[0_12px_32px_rgba(255,255,255,0.06)] transition-all duration-300 min-h-[48px] cursor-pointer"
                 >
                   VIEW WORK
                 </motion.a>
@@ -225,7 +280,7 @@ export default function Hero() {
                   download="Praveen_S_Resume.pdf"
                   whileHover={shouldReduceMotion ? {} : { scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full sm:w-auto inline-flex items-center justify-center text-center px-10 py-4 rounded-full border border-[rgba(255,255,255,0.2)] text-white font-bold text-[14px] tracking-[0.2em] hover:border-[#FF453A] hover:bg-[rgba(255,69,58,0.08)] transition-all duration-300 min-h-[48px] cursor-pointer"
+                  className="w-full sm:w-auto inline-flex items-center justify-center text-center px-9 py-3.5 rounded-full border border-[rgba(255,255,255,0.2)] text-white font-bold text-[14px] tracking-[0.2em] hover:border-[#FF453A] hover:bg-[rgba(255,69,58,0.08)] transition-all duration-300 min-h-[48px] cursor-pointer"
                 >
                   DOWNLOAD RESUME
                 </motion.a>
@@ -237,29 +292,32 @@ export default function Hero() {
               className="relative flex items-center justify-center h-auto md:h-[620px] w-full lg:w-[600px] xl:ml-auto flex-shrink-0 overflow-visible will-change-transform mt-12 lg:mt-0 lg:pt-28"
             >
               <div className="relative md:absolute w-full max-w-[460px] md:max-w-none md:w-[460px] h-auto md:h-[460px] flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
-                
                 <div className="absolute inset-0 m-auto w-[300px] h-[300px] rounded-full bg-[#FF453A]/5 blur-[80px] pointer-events-none mix-blend-screen hidden md:block" />
 
                 <motion.div
                   animate={{ rotate: shouldReduceMotion ? 0 : 360 }}
                   transition={ringSpinTransition(160)}
-                  className="absolute w-[540px] h-[540px] rounded-full border border-white/[0.03] pointer-events-none hidden md:block"
+                  className="absolute w-[500px] h-[500px] rounded-full border border-white/[0.03] pointer-events-none hidden md:block"
                 />
                 <motion.div
                   animate={{ rotate: shouldReduceMotion ? 0 : -360 }}
                   transition={ringSpinTransition(120)}
-                  className="absolute w-[440px] h-[440px] rounded-full border border-white/[0.05] pointer-events-none hidden md:block"
+                  className="absolute w-[400px] h-[400px] rounded-full border border-white/[0.05] pointer-events-none hidden md:block"
                 />
                 <motion.div
                   animate={{ rotate: shouldReduceMotion ? 0 : 360 }}
                   transition={ringSpinTransition(90)}
-                  className="absolute w-[340px] h-[340px] rounded-full border border-[#FF453A]/15 pointer-events-none hidden md:block"
+                  className="absolute w-[320px] h-[320px] rounded-full border border-[#FF453A]/15 pointer-events-none hidden md:block"
                 />
 
                 <motion.div
                   animate={{ y: shouldReduceMotion ? 0 : [0, -10, 0] }}
-                  transition={shouldReduceMotion ? { duration: 0 } : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative md:absolute order-first md:order-none z-20 w-[280px] h-[280px] rounded-full border border-[#FF453A]/25 bg-black backdrop-blur-3xl shadow-[0_0_64px_rgba(255,69,58,0.15)] flex flex-col items-center justify-center overflow-hidden mb-6 md:mb-0"
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                  }
+                  className="relative md:absolute order-first md:order-none z-20 w-[260px] h-[260px] rounded-full border border-[#FF453A]/25 bg-black backdrop-blur-3xl shadow-[0_0_64px_rgba(255,69,58,0.15)] flex flex-col items-center justify-center overflow-hidden mb-6 md:mb-0"
                 >
                   <img
                     src={HERO_CONFIG.photoSrc}
@@ -270,7 +328,7 @@ export default function Hero() {
                       transform: "translateZ(0)",
                     }}
                   />
-                  
+
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-8 flex flex-col items-center pointer-events-none z-10">
                     <p className="tracking-[0.35em] text-zinc-200 uppercase text-[14px] font-bold">
                       Praveen S.
