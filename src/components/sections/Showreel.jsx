@@ -34,6 +34,23 @@ export default function Showreel() {
     },
   ];
 
+  const reels = [
+    {
+      title: "Graphic Design",
+      index: "01 / MOTION ASSET",
+      playing: playing1,
+      setPlaying: setPlaying1,
+      src: "/videos/showreel.mp4",
+    },
+    {
+      title: "Video Editing",
+      index: "02 / NARRATIVE CUT",
+      playing: playing2,
+      setPlaying: setPlaying2,
+      src: "/videos/Video_Editor.mp4",
+    },
+  ];
+
   return (
     <section className="relative w-full overflow-hidden bg-[#030303] px-6 py-24 text-white selection:bg-[#FF453A] selection:text-black md:px-12 xl:px-24">
       <div className="pointer-events-none absolute left-[-180px] top-1/4 h-[520px] w-[520px] rounded-full bg-[#FF453A]/[0.06] blur-[150px]" />
@@ -60,22 +77,7 @@ export default function Showreel() {
 
         {/* Video showcase */}
         <div className="grid grid-cols-1 gap-7 lg:grid-cols-2">
-          {[
-            {
-              title: "Graphic Design",
-              index: "01 / MOTION ASSET",
-              playing: playing1,
-              setPlaying: setPlaying1,
-              src: "/videos/showreel.mp4",
-            },
-            {
-              title: "Video Editing",
-              index: "02 / NARRATIVE CUT",
-              playing: playing2,
-              setPlaying: setPlaying2,
-              src: "/videos/Video_Editor.mp4",
-            },
-          ].map((reel) => (
+          {reels.map((reel) => (
             <article
               key={reel.title}
               className="group rounded-[28px] border border-white/10 bg-white/[0.025] p-4 backdrop-blur-xl transition-all duration-500 hover:border-white/20 md:p-5"
@@ -93,23 +95,42 @@ export default function Showreel() {
               </div>
 
               <div className="relative aspect-video overflow-hidden rounded-[20px] border border-white/10 bg-black">
-                {!reel.playing ? (
+                <video
+                  src={reel.src}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  controls={reel.playing}
+                />
+
+                {/* Cinematic preview treatment */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/65 via-black/5 to-black/20" />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_25%,rgba(0,0,0,0.3)_100%)]" />
+
+                {!reel.playing && (
                   <button
                     type="button"
                     onClick={() => reel.setPlaying(true)}
                     aria-label={`Play ${reel.title} reel`}
-                    className="absolute inset-0 flex cursor-pointer items-center justify-center bg-zinc-950/30 transition-all duration-500 hover:bg-zinc-950/10"
+                    className="absolute inset-0 z-20 flex cursor-pointer items-center justify-center bg-transparent"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-tr from-black/70 via-transparent to-transparent" />
-                    <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-[#FF453A] text-black shadow-[0_0_35px_rgba(255,69,58,0.45)] transition-transform duration-300 group-hover:scale-110">
-                      <svg className="ml-0.5 h-6 w-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                    <div className="flex h-[72px] w-[72px] items-center justify-center rounded-full border border-white/20 bg-[#FF453A] text-black shadow-[0_0_45px_rgba(255,69,58,0.35)] transition-transform duration-300 group-hover:scale-110">
+                      <svg className="ml-1 h-7 w-7 fill-current" viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M8 5v14l11-7z" />
                       </svg>
                     </div>
                   </button>
-                ) : (
-                  <video src={reel.src} className="h-full w-full object-cover" controls autoPlay playsInline />
                 )}
+
+                <div className="pointer-events-none absolute bottom-4 left-4 z-10 flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-3 py-1.5 backdrop-blur-md">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#FF453A]" />
+                  <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/70">
+                    {reel.playing ? "Playing" : "Preview"}
+                  </span>
+                </div>
               </div>
             </article>
           ))}
