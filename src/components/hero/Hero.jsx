@@ -123,7 +123,7 @@ export default function Hero() {
 
       <section
         onMouseMove={handleMouseMovePerspective}
-        className="relative min-h-screen w-full overflow-hidden bg-[#050505] flex items-center select-none py-28 lg:py-0"
+        className="relative min-h-screen w-full overflow-hidden bg-[#050505] flex items-center select-none py-20 lg:py-0"
         aria-label="Creative Visual Designer Portfolio Hero"
       >
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -141,18 +141,14 @@ export default function Hero() {
               variants={STAGGER_VARIANTS}
               initial="hidden"
               animate="show"
-              className="relative max-w-[650px] w-full flex flex-col items-start text-left min-w-0 lg:pt-24"
+              className="relative max-w-[650px] w-full flex flex-col items-start text-left min-w-0 lg:pt-8"
             >
               <motion.div variants={ELEMENT_VARIANTS} custom={shouldReduceMotion} className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-px bg-[#FF453A]" aria-hidden="true" />
                 <span className="uppercase tracking-[0.32em] text-[#FF453A] text-[12px] font-bold">INTRODUCTION</span>
               </motion.div>
 
-              <motion.h1
-                variants={ELEMENT_VARIANTS}
-                custom={shouldReduceMotion}
-                className="font-black tracking-[-0.045em] text-left w-full select-none flex flex-col leading-[0.82] gap-0"
-              >
+              <motion.h1 variants={ELEMENT_VARIANTS} custom={shouldReduceMotion} className="font-black tracking-[-0.045em] text-left w-full select-none flex flex-col leading-[0.82] gap-0">
                 <span className="block text-white text-[56px] sm:text-[72px] md:text-[84px] xl:text-[104px]">CREATIVE</span>
                 <span className="custom-stroke-red block text-[56px] sm:text-[72px] md:text-[84px] xl:text-[104px] tracking-[0.01em]">VISUAL</span>
                 <span className="custom-stroke-white block text-[56px] sm:text-[72px] md:text-[84px] xl:text-[104px] tracking-[0.01em]">DESIGNER</span>
@@ -172,7 +168,7 @@ export default function Hero() {
               </motion.div>
             </motion.div>
 
-            <motion.div style={{ x: dynamicSpringX, y: dynamicSpringY }} className="relative flex items-center justify-center h-auto md:h-[620px] w-full lg:w-[600px] xl:ml-auto flex-shrink-0 overflow-visible will-change-transform mt-12 lg:mt-0 lg:pt-28">
+            <motion.div style={{ x: dynamicSpringX, y: dynamicSpringY }} className="relative flex items-center justify-center h-auto md:h-[620px] w-full lg:w-[600px] xl:ml-auto flex-shrink-0 overflow-visible will-change-transform mt-8 lg:mt-0 lg:pt-8">
               <div className="relative md:absolute w-full max-w-[460px] md:max-w-none md:w-[460px] h-auto md:h-[460px] flex flex-col md:flex-row items-center justify-center gap-4 md:gap-0">
                 <div className="absolute inset-0 m-auto w-[320px] h-[320px] rounded-full bg-[#FF453A]/5 blur-[90px] pointer-events-none mix-blend-screen hidden md:block" />
 
@@ -180,11 +176,7 @@ export default function Hero() {
                 <motion.div animate={{ rotate: shouldReduceMotion ? 0 : -360 }} transition={ringSpinTransition(140)} className="absolute w-[420px] h-[420px] rounded-full border border-white/[0.04] pointer-events-none hidden md:block" />
                 <motion.div animate={{ rotate: shouldReduceMotion ? 0 : 360 }} transition={ringSpinTransition(100)} className="absolute w-[330px] h-[330px] rounded-full border border-[#FF453A]/10 pointer-events-none hidden md:block" />
 
-                <motion.div
-                  animate={{ y: shouldReduceMotion ? 0 : [0, -8, 0] }}
-                  transition={shouldReduceMotion ? { duration: 0 } : { duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  className="relative md:absolute order-first md:order-none z-20 w-[300px] h-[300px] rounded-full border border-[#FF453A]/25 bg-black backdrop-blur-3xl shadow-[0_0_80px_rgba(255,69,58,0.16)] flex flex-col items-center justify-center overflow-hidden mb-6 md:mb-0"
-                >
+                <motion.div animate={{ y: shouldReduceMotion ? 0 : [0, -8, 0] }} transition={shouldReduceMotion ? { duration: 0 } : { duration: 6, repeat: Infinity, ease: "easeInOut" }} className="relative md:absolute order-first md:order-none z-20 w-[300px] h-[300px] rounded-full border border-[#FF453A]/25 bg-black backdrop-blur-3xl shadow-[0_0_80px_rgba(255,69,58,0.16)] flex flex-col items-center justify-center overflow-hidden mb-6 md:mb-0">
                   <img src={HERO_CONFIG.photoSrc} alt="Praveen S. Portrait" className="absolute inset-0 h-full w-full object-cover object-[center_top_35%] transition-all duration-700 select-none pointer-events-none" style={{ imageRendering: "-webkit-optimize-contrast", transform: "translateZ(0)" }} />
                   <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent pt-16 pb-8 flex flex-col items-center pointer-events-none z-10">
                     <p className="tracking-[0.35em] text-zinc-200 uppercase text-[14px] font-bold">Praveen S.</p>
