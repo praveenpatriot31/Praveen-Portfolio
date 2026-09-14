@@ -1,188 +1,230 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
-const EXPERIENCE_REGISTRY = [
+const EXPERIENCE = [
   {
     id: "01",
+    company: "Thermo Fisher Scientific",
     role: "Creative Visual Designer & AI Content Specialist",
-    company: "Thermo Fisher Scientific (Contract)",
-    location: "Global Team Focus",
-    period: "2026",
-    impact: "Designed premium visual creatives, high-end motion graphics, and integrated generative AI workflows using advanced systems like Higgsfield, Runway, Midjourney, Kling AI, and Veo 3 to scale global marketing and communication materials.",
-    deliverables: ["Generative AI Pipelines", "Motion Graphics", "Global Brand Assets"],
-    mediaUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop"
+    period: "Jan 2026 — Apr 2026",
+    location: "Singapore / Remote",
+    summary:
+      "Created visual content for internal and external communication, with motion, video and AI-assisted production supporting corporate and marketing needs.",
+    bullets: [
+      "Created visual content for internal and external communication.",
+      "Designed motion graphics and edited videos for marketing and corporate use.",
+      "Used AI-assisted tools to support content creation and ideation.",
+      "Collaborated with global teams to deliver high-quality visual assets on time."
+    ],
+    tags: ["Visual Design", "Motion", "Video", "AI-Assisted"]
   },
   {
     id: "02",
-    role: "Graphic Designer",
     company: "Sacumen",
-    location: "Bengaluru, IN",
+    role: "Graphic Designer",
     period: "2025",
-    impact: "Engineered high-performance digital marketing creatives, corporate presentations, and custom visual brand communication materials tightly aligned with primary strategic marketing objectives.",
-    deliverables: ["Brand Execution", "Digital Marketing Assets", "Presentation Systems"],
-    mediaUrl: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200&auto=format&fit=crop"
+    location: "Bengaluru, India",
+    summary:
+      "Designed brand creatives, marketing materials and digital assets across project and client requirements.",
+    bullets: [
+      "Designed brand creatives, marketing materials and digital assets.",
+      "Supported visual communication across various projects and clients.",
+      "Worked on social media content, print designs and presentations.",
+      "Collaborated with the team to meet project requirements and deadlines."
+    ],
+    tags: ["Brand Design", "Marketing", "Social", "Presentations"]
   },
   {
     id: "03",
-    role: "Creative Post-Production Artist",
     company: "ACube Creations",
-    location: "Bengaluru, IN",
+    role: "Creative Post-Production Artist",
     period: "2024 — 2025",
-    impact: "Produced complex motion graphic sequences, premium VFX layers, and high-fidelity video content for strategic corporate campaigns and digital multimedia showcases.",
-    deliverables: ["VFX Pipelines", "Motion Design", "Post-Production"],
-    mediaUrl: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop"
+    location: "Bengaluru, India",
+    summary:
+      "Worked across video editing, motion graphics, VFX and post-production for commercial and digital content.",
+    bullets: [
+      "Worked on video editing, motion graphics and post-production for commercial projects.",
+      "Supported visual storytelling for advertisements, corporate videos and digital content.",
+      "Collaborated with creative teams to deliver high-quality final outputs.",
+      "Handled multiple projects with focus on quality and on-time delivery."
+    ],
+    tags: ["Post-Production", "VFX", "Motion", "Video"]
   },
   {
     id: "04",
-    role: "Application Engineer — M&E Industry",
     company: "MicroGenesis CADSoft Pvt Ltd",
-    location: "Bengaluru, IN",
+    role: "Application Engineer",
     period: "2023 — 2024",
-    impact: "Delivered advanced technical consulting, complex workflow optimization solutions, and professional training mechanics across the complete Adobe enterprise creative suite.",
-    deliverables: ["Workflow Consulting", "Technical Support", "Adobe Ecosystems"],
-    mediaUrl: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop"
+    location: "Bengaluru, India",
+    summary:
+      "Provided technical support, training and workflow guidance for creative software users.",
+    bullets: [
+      "Delivered technical support and training on Adobe software to media professionals.",
+      "Resolved software issues and workflow challenges.",
+      "Provided guidance on creative applications and best practices."
+    ],
+    tags: ["Adobe", "Technical Support", "Training", "Workflows"]
   },
   {
     id: "05",
-    role: "Graphic Designer & Video Editor",
     company: "ACube Creations",
-    location: "Bengaluru, IN",
+    role: "Graphic Designer & Video Editor",
     period: "2022 — 2023",
-    impact: "Managed end-to-end post-production workflows, high-engagement promotional video assets, thumbnail optimization mechanics, and narrative visual storytelling campaigns.",
-    deliverables: ["Video Editing", "Social Media Assets", "Visual Storytelling"],
-    mediaUrl: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1200&auto=format&fit=crop"
+    location: "Bengaluru, India",
+    summary:
+      "Handled design and video production across promotional, social and post-production deliverables.",
+    bullets: [
+      "Managed end-to-end video editing and post-production workflows.",
+      "Created thumbnails, social media creatives and promotional videos.",
+      "Enhanced audience engagement through visual storytelling."
+    ],
+    tags: ["Graphic Design", "Video Editing", "Social", "Post-Production"]
   },
   {
     id: "06",
-    role: "Graphic Designer & Video Editor",
     company: "DIGILEARN Pvt Ltd",
-    location: "Bengaluru, IN",
+    role: "Graphic Designer & Video Editor",
     period: "2021 — 2022",
-    impact: "Designed underlying corporate identity assets, motion-led interactive educational content structures, and digital promotional matrices optimized for targeted webinars and product courses.",
-    deliverables: ["E-Learning Layouts", "Branding Assets", "Kinetic Content"],
-    mediaUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+    location: "Bengaluru, India",
+    summary:
+      "Built foundational experience across graphic design, video editing and digital content production.",
+    bullets: [
+      "Created branding materials and digital promotional content.",
+      "Edited video content for educational and digital communication needs.",
+      "Supported visual production across ongoing content requirements."
+    ],
+    tags: ["Graphic Design", "Video", "Digital Content"]
   }
 ];
 
 export default function Experience() {
-  const shouldReduceMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
+  const active = EXPERIENCE[activeIndex];
 
   return (
-    <section id="experience" className="relative w-full bg-[#050505] py-32 lg:py-48 px-6 md:px-12 xl:px-24 border-t border-white/[0.04] overflow-hidden select-none">
-      <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
-        
-        {/* LEFT CANVAS: Sticky Visual Preview Window */}
-        <div className="lg:col-span-5 lg:sticky lg:top-32 order-2 lg:order-1">
-          <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-zinc-950 border border-white/[0.06]">
-            
-            <div className="absolute -inset-10 bg-[#FF453A]/10 blur-[50px] rounded-full opacity-40 pointer-events-none" />
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, scale: 1.03 }}
-                animate={{ opacity: 0.75, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute inset-0 w-full h-full"
-              >
-                <img
-                  src={EXPERIENCE_REGISTRY[activeIndex].mediaUrl}
-                  alt={`${EXPERIENCE_REGISTRY[activeIndex].company} Workspace Context`}
-                  className="w-full h-full object-cover grayscale contrast-[1.15]"
-                />
-              </motion.div>
-            </AnimatePresence>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-black/40" />
-            
-            <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end">
-              <div>
-                <span className="text-[10px] font-bold tracking-[0.3em] text-[#FF453A] uppercase block mb-1">
-                  Firm Context
-                </span>
-                <p className="text-white text-sm font-semibold tracking-wider uppercase">
-                  {EXPERIENCE_REGISTRY[activeIndex].company}
-                </p>
-              </div>
-              <span className="text-[32px] font-black tracking-tighter text-white/20 font-mono">
-                {EXPERIENCE_REGISTRY[activeIndex].id}
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* RIGHT CANVAS: Interactive Stacked List */}
-        <div className="lg:col-span-7 flex flex-col order-1 lg:order-2">
-          
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[1px] bg-[#FF453A]" />
-              <span className="text-[11px] font-black tracking-[0.4em] text-[#FF453A] uppercase">
+    <section
+      id="experience"
+      className="relative w-full overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-28 md:px-12 lg:px-24 lg:py-40"
+    >
+      <div className="mx-auto max-w-[1500px]">
+        <div className="mb-16 grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#FF453A]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#FF453A]">
                 Track Record
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-white uppercase leading-none">
-              Professional <br />Experience
+            <h2 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.04em] text-white sm:text-5xl lg:text-7xl">
+              Experience that moves
+              <span className="text-zinc-500"> across disciplines.</span>
             </h2>
           </div>
+          <p className="max-w-md text-sm leading-7 text-zinc-400 lg:col-span-4 lg:justify-self-end">
+            A career spanning graphic design, video, motion, VFX, technical
+            creative workflows and AI-assisted production.
+          </p>
+        </div>
 
-          <div className="flex flex-col border-t border-white/[0.08]">
-            {EXPERIENCE_REGISTRY.map((item, index) => {
-              const isSelected = activeIndex === index;
-
-              return (
-                <div
-                  key={item.id}
-                  onMouseEnter={() => setActiveIndex(index)}
-                  onClick={() => setActiveIndex(index)}
-                  className="relative flex flex-col pt-8 pb-10 border-b border-white/[0.08] cursor-pointer group transition-all duration-300"
-                >
-                  <div className={`absolute left-0 top-0 bottom-0 w-[2px] bg-[#FF453A] transition-transform duration-500 ease-out origin-top ${isSelected ? "scale-y-100" : "scale-y-0"}`} />
-
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pl-4 sm:pl-6">
-                    <div className="flex items-baseline gap-4">
-                      <h3 className={`text-xl sm:text-2xl font-bold tracking-tight uppercase transition-colors duration-300 ${isSelected ? "text-white" : "text-zinc-400 group-hover:text-zinc-200"}`}>
-                        {item.role}
-                      </h3>
-                    </div>
-                    <span className="text-[12px] font-bold tracking-[0.2em] text-[#B8B8B8] sm:text-right">
-                      {item.period}
-                    </span>
-                  </div>
-
-                  <motion.div
-                    initial={false}
-                    animate={{ 
-                      height: isSelected ? "auto" : 0, 
-                      opacity: isSelected ? 1 : 0 
-                    }}
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
+        <div className="grid overflow-hidden rounded-2xl border border-white/[0.08] bg-[#090909] lg:grid-cols-12">
+          <aside className="border-b border-white/[0.08] lg:col-span-4 lg:border-b-0 lg:border-r">
+            <div className="border-b border-white/[0.08] px-6 py-5 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500">
+              Professional Experience
+            </div>
+            <div className="p-3">
+              {EXPERIENCE.map((item, index) => {
+                const selected = index === activeIndex;
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => setActiveIndex(index)}
+                    className={`relative flex w-full items-start gap-4 rounded-xl px-4 py-4 text-left transition-colors duration-300 ${
+                      selected ? "bg-white/[0.06]" : "hover:bg-white/[0.03]"
+                    }`}
                   >
-                    <div className="pt-6 pl-4 sm:pl-6 max-w-xl">
-                      <p className="text-[#B8B8B8] text-[15px] font-normal leading-relaxed tracking-wide antialiased">
-                        {item.impact}
-                      </p>
+                    <span
+                      className={`mt-1 text-[10px] font-mono tracking-widest ${
+                        selected ? "text-[#FF453A]" : "text-zinc-600"
+                      }`}
+                    >
+                      {item.id}
+                    </span>
+                    <span className="min-w-0">
+                      <span
+                        className={`block text-sm font-bold uppercase tracking-tight ${
+                          selected ? "text-white" : "text-zinc-400"
+                        }`}
+                      >
+                        {item.company}
+                      </span>
+                      <span className="mt-1 block text-[11px] leading-5 text-zinc-600">
+                        {item.period}
+                      </span>
+                    </span>
+                    {selected && (
+                      <motion.span
+                        layoutId="experience-indicator"
+                        className="absolute bottom-3 left-0 top-3 w-[2px] bg-[#FF453A]"
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </aside>
 
-                      <div className="flex flex-wrap gap-2 mt-6">
-                        {item.deliverables.map((tag) => (
-                          <span
-                            key={tag}
-                            className="bg-zinc-950 border border-white/[0.06] text-zinc-400 text-[10px] font-bold uppercase tracking-[0.15em] px-3.5 py-1.5 rounded-sm"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
+          <div className="relative min-h-[520px] lg:col-span-8">
+            <div className="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-[#FF453A]/[0.07] blur-3xl" />
+            <motion.div
+              key={active.id}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35 }}
+              className="relative flex h-full flex-col p-7 sm:p-10 lg:p-14"
+            >
+              <div className="flex flex-col gap-5 border-b border-white/[0.08] pb-8 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF453A]">
+                    {active.location}
+                  </span>
+                  <h3 className="text-2xl font-black uppercase leading-tight tracking-[-0.03em] text-white sm:text-4xl">
+                    {active.role}
+                  </h3>
+                  <p className="mt-2 text-sm font-medium uppercase tracking-wider text-zinc-500">
+                    {active.company}
+                  </p>
                 </div>
-              );
-            })}
-          </div>
+                <span className="shrink-0 text-xs font-bold uppercase tracking-[0.18em] text-zinc-500">
+                  {active.period}
+                </span>
+              </div>
 
+              <p className="max-w-2xl pt-8 text-base leading-7 text-zinc-300">
+                {active.summary}
+              </p>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {active.bullets.map((bullet) => (
+                  <div key={bullet} className="flex gap-3 border-t border-white/[0.07] pt-4">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF453A]" />
+                    <p className="text-sm leading-6 text-zinc-400">{bullet}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-auto flex flex-wrap gap-2 pt-10">
+                {active.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full border border-white/[0.09] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.16em] text-zinc-500"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
