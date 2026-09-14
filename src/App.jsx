@@ -14,6 +14,7 @@ const FeaturedProjects = lazy(() => import("./components/sections/FeaturedProjec
 const PaintOPaintsCaseStudy = lazy(() => import("./components/sections/PaintOPaintsCaseStudy"));
 const ManiGroupCaseStudy = lazy(() => import("./components/sections/ManiGroupCaseStudy"));
 const Impact = lazy(() => import("./components/sections/Impact"));
+const About = lazy(() => import("./components/sections/About"));
 const Experience = lazy(() => import("./components/sections/Experience"));
 const Skills = lazy(() => import("./components/sections/Skills"));
 const Services = lazy(() => import("./components/sections/ServicesGrid"));
@@ -23,11 +24,7 @@ const Contact = lazy(() => import("./components/sections/Contact"));
 
 function Loading() {
   return (
-    <div
-      className="flex min-h-[35vh] items-center justify-center bg-[#080808] px-6 text-sm text-zinc-400"
-      role="status"
-      aria-live="polite"
-    >
+    <div className="flex min-h-[35vh] items-center justify-center bg-[#080808] px-6 text-sm text-zinc-400" role="status" aria-live="polite">
       Loading…
     </div>
   );
@@ -57,10 +54,7 @@ export default function App() {
 
   return (
     <div className="overflow-x-hidden bg-black text-white">
-      <a
-        href="#main-content"
-        className="sr-only fixed left-4 top-4 z-[10000] rounded bg-white px-4 py-3 text-sm font-semibold text-black focus:not-sr-only"
-      >
+      <a href="#main-content" className="sr-only fixed left-4 top-4 z-[10000] rounded bg-white px-4 py-3 text-sm font-semibold text-black focus:not-sr-only">
         Skip to content
       </a>
       <Loader />
@@ -73,6 +67,7 @@ export default function App() {
           <PaintOPaintsCaseStudy />
           <ManiGroupCaseStudy />
           <Impact />
+          <About />
           <Experience />
           <Skills />
           <Services />
