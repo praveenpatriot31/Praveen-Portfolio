@@ -23,7 +23,11 @@ const Contact = lazy(() => import("./components/sections/Contact"));
 
 function Loading() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#080808] text-white" role="status" aria-live="polite">
+    <div
+      className="flex min-h-[35vh] items-center justify-center bg-[#080808] px-6 text-sm text-zinc-400"
+      role="status"
+      aria-live="polite"
+    >
       Loading…
     </div>
   );
@@ -52,10 +56,16 @@ export default function App() {
   }, []);
 
   return (
-    <div className="bg-black text-white overflow-x-hidden">
+    <div className="overflow-x-hidden bg-black text-white">
+      <a
+        href="#main-content"
+        className="sr-only fixed left-4 top-4 z-[10000] rounded bg-white px-4 py-3 text-sm font-semibold text-black focus:not-sr-only"
+      >
+        Skip to content
+      </a>
       <Loader />
       <CustomCursor />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <Suspense fallback={<Loading />}>
           <Showreel />
