@@ -12,6 +12,7 @@ import Hero from "./components/hero/HeroClean";
 const Showreel = lazy(() => import("./components/sections/Showreel"));
 const FeaturedProjects = lazy(() => import("./components/sections/FeaturedProjectsPro"));
 const PaintOPaintsCaseStudy = lazy(() => import("./components/sections/PaintOPaintsCaseStudy"));
+const ManiGroupCaseStudy = lazy(() => import("./components/sections/ManiGroupCaseStudy"));
 const Impact = lazy(() => import("./components/sections/Impact"));
 const Experience = lazy(() => import("./components/sections/Experience"));
 const Skills = lazy(() => import("./components/sections/Skills"));
@@ -60,6 +61,7 @@ export default function App() {
           <Showreel />
           <FeaturedProjects />
           <PaintOPaintsCaseStudy />
+          <ManiGroupCaseStudy />
           <Impact />
           <Experience />
           <Skills />
