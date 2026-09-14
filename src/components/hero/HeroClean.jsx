@@ -1,6 +1,6 @@
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Download, Play } from "lucide-react";
+import { ArrowUpRight, Download } from "lucide-react";
 
 const stats = [
   ["5+", "Years experience"],
@@ -21,7 +21,7 @@ export default function HeroClean() {
           <a href="#top" className="text-sm font-bold tracking-[.28em]">PRAVEEN<span className="text-[#ff453a]">.</span></a>
           <div className="hidden items-center gap-8 text-[11px] font-semibold uppercase tracking-[.22em] text-white/55 md:flex">
             <a href="#work" className="transition hover:text-white">Work</a>
-            <a href="#about" className="transition hover:text-white">About</a>
+            <a href="#experience" className="transition hover:text-white">Experience</a>
             <a href="#contact" className="transition hover:text-white">Contact</a>
           </div>
           <a href="#contact" className="rounded-full border border-white/15 px-4 py-2 text-[10px] font-bold uppercase tracking-[.2em] transition hover:border-white/40">Available for work</a>
@@ -46,7 +46,7 @@ export default function HeroClean() {
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/10 bg-[#111] shadow-2xl">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,69,58,.38),transparent_28%),linear-gradient(145deg,#1b1b1b,#080808_62%)]" />
               <div className="absolute inset-x-8 bottom-8 rounded-2xl border border-white/10 bg-black/40 p-5 backdrop-blur-xl">
-                <div className="flex items-center justify-between"><span className="text-[10px] uppercase tracking-[.24em] text-white/45">Current focus</span><Play size={15} className="text-[#ff453a]" /></div>
+                <div className="flex items-center justify-between"><span className="text-[10px] uppercase tracking-[.24em] text-white/45">Current focus</span><span className="h-2 w-2 rounded-full bg-[#ff453a]" /></div>
                 <p className="mt-3 text-2xl font-bold tracking-tight">Design × Motion × AI</p>
               </div>
               <div className="absolute left-8 top-8 text-[9px] uppercase tracking-[.3em] text-white/35">01 / Selected direction</div>
