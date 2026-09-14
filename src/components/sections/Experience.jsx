@@ -1,230 +1,196 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 
 const EXPERIENCE = [
   {
     id: "01",
-    company: "Thermo Fisher Scientific",
+    company: "WHOOSH SINGAPORE PTE. LTD.",
+    role: "Creative Visual Designer & AI Automation",
+    period: "2026",
+    location: "Singapore · Freelance",
+    summary:
+      "Developed visual concepts, website experiences and business communication assets across brand touchpoints.",
+    bullets: [
+      "Developed visual concepts, layouts and digital assets across brand touchpoints.",
+      "Designed website experiences aligned with business requirements and brand objectives.",
+      "Created business and marketing collateral for digital communication and promotional requirements.",
+      "Applied AI-assisted workflows and explored automation opportunities for content and production."
+    ],
+    tags: ["Visual Design", "Web", "AI-Assisted", "Automation"]
+  },
+  {
+    id: "02",
+    company: "THERMO FISHER SCIENTIFIC",
     role: "Creative Visual Designer & AI Content Specialist",
     period: "Jan 2026 — Apr 2026",
-    location: "Singapore / Remote",
+    location: "Singapore / Remote · Contract",
     summary:
-      "Created visual content for internal and external communication, with motion, video and AI-assisted production supporting corporate and marketing needs.",
+      "Created visual content for marketing and corporate communication, supporting motion, video and AI-assisted production workflows.",
     bullets: [
-      "Created visual content for internal and external communication.",
-      "Designed motion graphics and edited videos for marketing and corporate use.",
-      "Used AI-assisted tools to support content creation and ideation.",
-      "Collaborated with global teams to deliver high-quality visual assets on time."
+      "Developed visual content for marketing and corporate communication.",
+      "Created AI-assisted concepts and generative content for creative workflows.",
+      "Supported motion graphics, video and multimedia production.",
+      "Collaborated with international stakeholders to develop and refine creative outputs."
     ],
     tags: ["Visual Design", "Motion", "Video", "AI-Assisted"]
   },
   {
-    id: "02",
-    company: "Sacumen",
+    id: "03",
+    company: "SACUMEN",
     role: "Graphic Designer",
     period: "2025",
     location: "Bengaluru, India",
     summary:
-      "Designed brand creatives, marketing materials and digital assets across project and client requirements.",
+      "Designed campaign creatives, promotional materials and presentations across digital and marketing requirements.",
     bullets: [
-      "Designed brand creatives, marketing materials and digital assets.",
-      "Supported visual communication across various projects and clients.",
-      "Worked on social media content, print designs and presentations.",
-      "Collaborated with the team to meet project requirements and deadlines."
+      "Created campaign creatives, promotional materials and presentations.",
+      "Translated business requirements into clear visual communication assets.",
+      "Collaborated with stakeholders to refine and deliver creative work.",
+      "Maintained visual consistency across digital and marketing materials."
     ],
-    tags: ["Brand Design", "Marketing", "Social", "Presentations"]
-  },
-  {
-    id: "03",
-    company: "ACube Creations",
-    role: "Creative Post-Production Artist",
-    period: "2024 — 2025",
-    location: "Bengaluru, India",
-    summary:
-      "Worked across video editing, motion graphics, VFX and post-production for commercial and digital content.",
-    bullets: [
-      "Worked on video editing, motion graphics and post-production for commercial projects.",
-      "Supported visual storytelling for advertisements, corporate videos and digital content.",
-      "Collaborated with creative teams to deliver high-quality final outputs.",
-      "Handled multiple projects with focus on quality and on-time delivery."
-    ],
-    tags: ["Post-Production", "VFX", "Motion", "Video"]
+    tags: ["Brand Design", "Marketing", "Campaigns", "Presentations"]
   },
   {
     id: "04",
-    company: "MicroGenesis CADSoft Pvt Ltd",
-    role: "Application Engineer",
-    period: "2023 — 2024",
+    company: "ACUBE CREATIVE",
+    role: "Post Production Artist",
+    period: "Jun 2022 — May 2023",
     location: "Bengaluru, India",
     summary:
-      "Provided technical support, training and workflow guidance for creative software users.",
+      "Worked across video editing, motion graphics and post-production projects from production through final delivery.",
     bullets: [
-      "Delivered technical support and training on Adobe software to media professionals.",
-      "Resolved software issues and workflow challenges.",
-      "Provided guidance on creative applications and best practices."
+      "Worked on video editing, motion graphics and post-production projects.",
+      "Created visual content for digital platforms, corporate videos and promotions.",
+      "Collaborated with the creative team to deliver high-quality outputs.",
+      "Managed projects from concept to final delivery."
     ],
-    tags: ["Adobe", "Technical Support", "Training", "Workflows"]
+    tags: ["Post-Production", "Video", "Motion", "Editing"]
   },
   {
     id: "05",
-    company: "ACube Creations",
-    role: "Graphic Designer & Video Editor",
-    period: "2022 — 2023",
+    company: "MICROGENESIS SOFTTECH PVT. LTD.",
+    role: "Graphic Designer",
+    period: "Nov 2021 — May 2022",
     location: "Bengaluru, India",
     summary:
-      "Handled design and video production across promotional, social and post-production deliverables.",
+      "Created marketing materials, presentations and digital creatives across web, social media and print.",
     bullets: [
-      "Managed end-to-end video editing and post-production workflows.",
-      "Created thumbnails, social media creatives and promotional videos.",
-      "Enhanced audience engagement through visual storytelling."
+      "Designed marketing materials, presentations and digital creatives.",
+      "Developed visual assets for web, social media and print.",
+      "Ensured brand consistency across creative deliverables.",
+      "Supported concept development and design execution."
     ],
-    tags: ["Graphic Design", "Video Editing", "Social", "Post-Production"]
+    tags: ["Graphic Design", "Digital", "Print", "Brand Consistency"]
   },
   {
     id: "06",
-    company: "DIGILEARN Pvt Ltd",
-    role: "Graphic Designer & Video Editor",
-    period: "2021 — 2022",
+    company: "DIGILEARN SERVICES",
+    role: "Graphic Design Intern",
+    period: "Sep 2020 — Oct 2021",
     location: "Bengaluru, India",
     summary:
-      "Built foundational experience across graphic design, video editing and digital content production.",
+      "Built foundational experience in graphic design and digital content production while supporting senior designers.",
     bullets: [
-      "Created branding materials and digital promotional content.",
-      "Edited video content for educational and digital communication needs.",
-      "Supported visual production across ongoing content requirements."
+      "Assisted in creating graphics for digital marketing and social media.",
+      "Worked on layouts, banners and promotional creatives.",
+      "Applied design principles in real-time projects.",
+      "Supported senior designers in daily creative tasks."
     ],
-    tags: ["Graphic Design", "Video", "Digital Content"]
+    tags: ["Graphic Design", "Social", "Layouts", "Digital Content"]
   }
 ];
 
 export default function Experience() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = EXPERIENCE[activeIndex];
-
   return (
     <section
       id="experience"
-      className="relative w-full overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-28 md:px-12 lg:px-24 lg:py-40"
+      className="w-full border-b border-white/[0.06] bg-[#050505] px-6 py-24 text-white md:px-12 lg:px-24 lg:py-32"
+      aria-labelledby="experience-title"
     >
-      <div className="mx-auto max-w-[1500px]">
-        <div className="mb-16 grid gap-10 lg:grid-cols-12 lg:items-end">
+      <div className="mx-auto max-w-[1400px]">
+        <header className="mb-16 grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
             <div className="mb-5 flex items-center gap-3">
-              <span className="h-px w-8 bg-[#FF453A]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#FF453A]">
-                Track Record
+              <span className="h-px w-8 bg-[#FF453A]" aria-hidden="true" />
+              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#FF453A]">
+                Experience
               </span>
             </div>
-            <h2 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.04em] text-white sm:text-5xl lg:text-7xl">
-              Experience that moves
-              <span className="text-zinc-500"> across disciplines.</span>
+            <h2
+              id="experience-title"
+              className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.045em] sm:text-5xl lg:text-7xl"
+            >
+              A multidisciplinary
+              <span className="text-zinc-500"> creative track record.</span>
             </h2>
           </div>
           <p className="max-w-md text-sm leading-7 text-zinc-400 lg:col-span-4 lg:justify-self-end">
-            A career spanning graphic design, video, motion, VFX, technical
-            creative workflows and AI-assisted production.
+            Experience across visual design, video, motion, post-production and AI-assisted creative workflows, including work with Singapore-based teams.
           </p>
-        </div>
+        </header>
 
-        <div className="grid overflow-hidden rounded-2xl border border-white/[0.08] bg-[#090909] lg:grid-cols-12">
-          <aside className="border-b border-white/[0.08] lg:col-span-4 lg:border-b-0 lg:border-r">
-            <div className="border-b border-white/[0.08] px-6 py-5 text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500">
-              Professional Experience
-            </div>
-            <div className="p-3">
-              {EXPERIENCE.map((item, index) => {
-                const selected = index === activeIndex;
-                return (
-                  <button
-                    key={item.id}
-                    type="button"
-                    onClick={() => setActiveIndex(index)}
-                    className={`relative flex w-full items-start gap-4 rounded-xl px-4 py-4 text-left transition-colors duration-300 ${
-                      selected ? "bg-white/[0.06]" : "hover:bg-white/[0.03]"
-                    }`}
-                  >
-                    <span
-                      className={`mt-1 text-[10px] font-mono tracking-widest ${
-                        selected ? "text-[#FF453A]" : "text-zinc-600"
-                      }`}
-                    >
-                      {item.id}
-                    </span>
-                    <span className="min-w-0">
-                      <span
-                        className={`block text-sm font-bold uppercase tracking-tight ${
-                          selected ? "text-white" : "text-zinc-400"
-                        }`}
-                      >
-                        {item.company}
-                      </span>
-                      <span className="mt-1 block text-[11px] leading-5 text-zinc-600">
-                        {item.period}
-                      </span>
-                    </span>
-                    {selected && (
-                      <motion.span
-                        layoutId="experience-indicator"
-                        className="absolute bottom-3 left-0 top-3 w-[2px] bg-[#FF453A]"
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </aside>
-
-          <div className="relative min-h-[520px] lg:col-span-8">
-            <div className="pointer-events-none absolute right-0 top-0 h-72 w-72 rounded-full bg-[#FF453A]/[0.07] blur-3xl" />
-            <motion.div
-              key={active.id}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35 }}
-              className="relative flex h-full flex-col p-7 sm:p-10 lg:p-14"
+        <div className="border-y border-white/10">
+          {EXPERIENCE.map((item) => (
+            <article
+              key={item.id}
+              className="grid gap-8 border-b border-white/10 py-10 last:border-b-0 lg:grid-cols-12 lg:gap-10 lg:py-12"
             >
-              <div className="flex flex-col gap-5 border-b border-white/[0.08] pb-8 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <span className="mb-3 block text-[10px] font-bold uppercase tracking-[0.28em] text-[#FF453A]">
-                    {active.location}
+              <div className="lg:col-span-3">
+                <div className="flex items-start gap-4">
+                  <span className="pt-1 text-[10px] font-mono tracking-[0.2em] text-[#FF453A]">
+                    {item.id}
                   </span>
-                  <h3 className="text-2xl font-black uppercase leading-tight tracking-[-0.03em] text-white sm:text-4xl">
-                    {active.role}
-                  </h3>
-                  <p className="mt-2 text-sm font-medium uppercase tracking-wider text-zinc-500">
-                    {active.company}
-                  </p>
-                </div>
-                <span className="shrink-0 text-xs font-bold uppercase tracking-[0.18em] text-zinc-500">
-                  {active.period}
-                </span>
-              </div>
-
-              <p className="max-w-2xl pt-8 text-base leading-7 text-zinc-300">
-                {active.summary}
-              </p>
-
-              <div className="mt-8 grid gap-3 sm:grid-cols-2">
-                {active.bullets.map((bullet) => (
-                  <div key={bullet} className="flex gap-3 border-t border-white/[0.07] pt-4">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF453A]" />
-                    <p className="text-sm leading-6 text-zinc-400">{bullet}</p>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-400">
+                      {item.period}
+                    </p>
+                    <p className="mt-2 text-xs leading-5 text-zinc-600">
+                      {item.location}
+                    </p>
                   </div>
-                ))}
+                </div>
               </div>
 
-              <div className="mt-auto flex flex-wrap gap-2 pt-10">
-                {active.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full border border-white/[0.09] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.16em] text-zinc-500"
-                  >
-                    {tag}
+              <div className="lg:col-span-9">
+                <div className="flex flex-col gap-4 border-b border-white/[0.08] pb-6 sm:flex-row sm:items-start sm:justify-between">
+                  <div>
+                    <h3 className="text-xl font-black uppercase leading-tight tracking-[-0.025em] text-white sm:text-2xl">
+                      {item.role}
+                    </h3>
+                    <p className="mt-2 text-sm font-medium uppercase tracking-[0.12em] text-zinc-500">
+                      {item.company}
+                    </p>
+                  </div>
+                  <span className="hidden text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600 sm:block">
+                    {item.id} / 06
                   </span>
-                ))}
+                </div>
+
+                <p className="max-w-3xl pt-6 text-sm leading-7 text-zinc-300 sm:text-base">
+                  {item.summary}
+                </p>
+
+                <div className="mt-6 grid gap-x-8 gap-y-4 sm:grid-cols-2">
+                  {item.bullets.map((bullet) => (
+                    <div key={bullet} className="flex gap-3">
+                      <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF453A]" aria-hidden="true" />
+                      <p className="text-sm leading-6 text-zinc-400">{bullet}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-7 flex flex-wrap gap-2">
+                  {item.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-white/[0.09] px-3 py-1.5 text-[9px] font-semibold uppercase tracking-[0.15em] text-zinc-500"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </motion.div>
-          </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
