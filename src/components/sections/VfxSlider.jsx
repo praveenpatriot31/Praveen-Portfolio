@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowLeftRight, Check, MousePointer2 } from 'lucide-react';
 
+const SKILLS = ['Compositing', 'Roto', 'Paint Prep', 'Integration'];
+
 export default function VfxSlider() {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -76,20 +78,20 @@ export default function VfxSlider() {
         <div className="mb-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <div className="mb-4 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-500">
-              <span className="text-[#ff453a]">05</span>
+              <span className="text-[#ff453a]">VFX</span>
               <span className="h-px w-8 bg-[#ff453a]/60" />
-              VFX Compositing
+              Compositing Breakdown
             </div>
             <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
               From plate to final composite.
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400 sm:text-base">
-              A practical before-and-after view of the compositing process, presented as a hands-on breakdown rather than a visual effect claim.
+              A practical before-and-after view of a compositing pass, presented as a process breakdown rather than a client or performance claim.
             </p>
           </div>
 
           <div className="flex flex-wrap gap-2 lg:justify-end">
-            {['Compositing', 'Roto', 'Paint Prep', 'Integration'].map((skill) => (
+            {SKILLS.map((skill) => (
               <span
                 key={skill}
                 className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-zinc-300"
@@ -122,6 +124,7 @@ export default function VfxSlider() {
             loop
             muted
             playsInline
+            preload="metadata"
             className="absolute inset-0 h-full w-full object-cover"
           />
 
@@ -136,6 +139,7 @@ export default function VfxSlider() {
               loop
               muted
               playsInline
+              preload="metadata"
               className="h-full w-full object-cover"
               style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%' }}
             />
