@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 const REELS = [
   {
@@ -15,6 +15,21 @@ const REELS = [
 
 export default function Showreel() {
   const [playing, setPlaying] = useState(null);
+  const videoRefs = useRef([]);
+
+  const handlePlay = (index) => {
+    videoRefs.current.forEach((video, videoIndex) => {
+      if (video && videoIndex !== index) video.pause();
+    });
+
+    setPlaying(index);
+
+    const video = videoRefs.current[index];
+    if (video) {
+      video.controls = true;
+      void video.play().catch(() => {});
+    }
+  };
 
   return (
     <section
@@ -59,13 +74,15 @@ export default function Showreel() {
 
                 <div className="relative aspect-video overflow-hidden rounded-[16px] bg-black">
                   <video
+                    ref={(element) => {
+                      videoRefs.current[index] = element;
+                    }}
                     src={reel.src}
                     className="h-full w-full object-cover"
-                    autoPlay
                     muted
                     loop
                     playsInline
-                    preload="metadata"
+                    preload="none"
                     controls={isPlaying}
                     aria-label={`${reel.title} reel`}
                   />
@@ -74,8 +91,8 @@ export default function Showreel() {
                   {!isPlaying && (
                     <button
                       type="button"
-                      onClick={() => setPlaying(index)}
-                      aria-label={`Open controls for ${reel.title}`}
+                      onClick={() => handlePlay(index)}
+                      aria-label={`Play ${reel.title} reel`}
                       className="absolute inset-0 z-10 flex items-center justify-center"
                     >
                       <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#FF453A] text-black shadow-[0_0_35px_rgba(255,69,58,0.3)] transition-transform duration-300 hover:scale-105">
