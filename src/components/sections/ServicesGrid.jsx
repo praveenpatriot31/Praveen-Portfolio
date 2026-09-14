@@ -7,32 +7,32 @@ const CAPABILITIES = [
     tag: "DESIGN",
     title: "Brand & Visual Design",
     description:
-      "Brand identities, marketing creatives, layouts and visual systems built for clear, consistent communication.",
-    skills: ["Brand Design", "Marketing", "Layouts"]
+      "Brand identities, marketing creatives, layouts and visual systems designed for clear, consistent communication.",
+    outcome: "Clear visual communication"
   },
   {
     number: "02",
-    tag: "MOTION",
+    tag: "MOTION / VIDEO",
     title: "Motion & Video",
     description:
-      "Edited videos and motion graphics for corporate, promotional, social and digital communication.",
-    skills: ["Editing", "Motion Graphics", "Post-Production"]
+      "Video editing and motion graphics for corporate, promotional, social and digital communication.",
+    outcome: "Polished moving content"
   },
   {
     number: "03",
-    tag: "VFX",
+    tag: "POST-PRODUCTION",
     title: "VFX & Compositing",
     description:
-      "Post-production support across compositing, roto, paint prep, green-screen work and visual integration.",
-    skills: ["Nuke", "Compositing", "Roto / Paint"]
+      "Compositing, roto, paint prep, green-screen work and visual integration across post-production workflows.",
+    outcome: "Integrated final composites"
   },
   {
     number: "04",
     tag: "AI-ASSISTED",
     title: "AI Creative Workflows",
     description:
-      "AI-assisted ideation and content exploration integrated into established design, motion and production workflows.",
-    skills: ["Higgsfield", "Runway", "Firefly"]
+      "AI-assisted ideation and content exploration used alongside established design, motion and production workflows.",
+    outcome: "Faster creative exploration"
   }
 ];
 
@@ -69,13 +69,12 @@ export default function ServicesGrid() {
               </span>
             </div>
             <h2 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.04em] text-white sm:text-5xl lg:text-7xl">
-              What I can bring
+              How I can contribute
               <span className="text-zinc-500"> to a creative team.</span>
             </h2>
           </div>
           <p className="max-w-md text-sm leading-7 text-zinc-400 lg:col-span-4 lg:justify-self-end">
-            A practical mix of design and production capabilities—built to move
-            from concept through polished visual output.
+            Cross-disciplinary capability without losing the core: strong visual thinking, production craft and reliable execution.
           </p>
         </motion.div>
 
@@ -89,9 +88,9 @@ export default function ServicesGrid() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ delay: index * 0.05 }}
               whileHover={reduceMotion ? {} : { y: -4 }}
-              className="group relative min-h-[310px] overflow-hidden rounded-2xl border border-white/[0.08] bg-[#090909] p-7 transition-colors duration-300 hover:border-white/[0.14] sm:p-10"
+              className="group relative min-h-[300px] overflow-hidden rounded-2xl border border-white/[0.08] bg-[#090909] p-7 transition-colors duration-300 hover:border-white/[0.14] sm:p-10"
             >
-              <div className="absolute right-0 top-0 h-48 w-48 rounded-full bg-[#FF453A]/[0.035] blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="absolute right-0 top-0 h-48 w-48 rounded-full bg-[#FF453A]/[0.035] blur-3xl" />
 
               <div className="relative flex h-full flex-col">
                 <div className="flex items-start justify-between">
@@ -112,15 +111,9 @@ export default function ServicesGrid() {
                   </p>
                 </div>
 
-                <div className="mt-auto flex flex-wrap gap-2 pt-10">
-                  {item.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-white/[0.08] px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.15em] text-zinc-500"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                <div className="mt-auto border-t border-white/[0.07] pt-5">
+                  <span className="text-[9px] font-bold uppercase tracking-[0.18em] text-zinc-600">Value</span>
+                  <p className="mt-1 text-sm font-medium text-zinc-300">{item.outcome}</p>
                 </div>
               </div>
             </motion.article>
