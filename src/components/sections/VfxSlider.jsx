@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { ArrowLeftRight, Check, MousePointer2 } from 'lucide-react';
+import React, { useEffect, useRef, useState } from "react";
+import { ArrowLeftRight, Check, MousePointer2 } from "lucide-react";
 
-const SKILLS = ['Compositing', 'Roto', 'Paint Prep', 'Integration'];
+const SKILLS = ["Compositing", "Roto", "Paint Prep", "Integration"];
 
 export default function VfxSlider() {
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -13,34 +13,35 @@ export default function VfxSlider() {
   useEffect(() => {
     const before = beforeVideoRef.current;
     const after = afterVideoRef.current;
-    if (!before || !after) return;
+    if (!before || !after) return undefined;
 
-    const syncPlay = () => before.play().catch(() => {});
-    const syncPause = () => before.pause();
-    const syncTime = () => {
-      if (Math.abs(before.currentTime - after.currentTime) > 0.05) {
+    const syncBefore = () => {
+      if (Math.abs(before.currentTime - after.currentTime) > 0.08) {
         before.currentTime = after.currentTime;
       }
     };
 
-    after.addEventListener('play', syncPlay);
-    after.addEventListener('pause', syncPause);
-    after.addEventListener('timeupdate', syncTime);
+    const playBefore = () => before.play().catch(() => {});
+    const pauseBefore = () => before.pause();
+
+    after.addEventListener("timeupdate", syncBefore);
+    after.addEventListener("play", playBefore);
+    after.addEventListener("pause", pauseBefore);
 
     return () => {
-      after.removeEventListener('play', syncPlay);
-      after.removeEventListener('pause', syncPause);
-      after.removeEventListener('timeupdate', syncTime);
+      after.removeEventListener("timeupdate", syncBefore);
+      after.removeEventListener("play", playBefore);
+      after.removeEventListener("pause", pauseBefore);
     };
   }, []);
 
   useEffect(() => {
     const stopDragging = () => setIsDragging(false);
-    window.addEventListener('mouseup', stopDragging);
-    window.addEventListener('touchend', stopDragging);
+    window.addEventListener("mouseup", stopDragging);
+    window.addEventListener("touchend", stopDragging);
     return () => {
-      window.removeEventListener('mouseup', stopDragging);
-      window.removeEventListener('touchend', stopDragging);
+      window.removeEventListener("mouseup", stopDragging);
+      window.removeEventListener("touchend", stopDragging);
     };
   }, []);
 
@@ -52,41 +53,38 @@ export default function VfxSlider() {
     setSliderPosition(Math.max(0, Math.min(100, next)));
   };
 
-  const handleMouseMove = (event) => {
-    if (isDragging) updatePosition(event.clientX);
-  };
-
-  const handleTouchMove = (event) => {
-    if (isDragging && event.touches[0]) updatePosition(event.touches[0].clientX);
-  };
-
   const handleKeyDown = (event) => {
-    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
-      event.preventDefault();
-      setSliderPosition((current) =>
-        Math.max(0, Math.min(100, current + (event.key === 'ArrowRight' ? 5 : -5)))
-      );
-    }
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    setSliderPosition((current) =>
+      Math.max(0, Math.min(100, current + (event.key === "ArrowRight" ? 5 : -5)))
+    );
   };
 
   return (
     <section
       id="vfx-slider"
-      className="w-full overflow-hidden border-t border-white/[0.06] bg-[#050505] px-5 py-20 sm:px-8 lg:px-16"
+      className="w-full border-b border-white/[0.06] bg-[#050505] px-6 py-24 text-white md:px-12 lg:px-24 lg:py-32"
+      aria-labelledby="vfx-title"
     >
-      <div className="mx-auto max-w-6xl">
-        <div className="mb-10 grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
-          <div>
-            <div className="mb-4 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-500">
-              <span className="text-[#ff453a]">VFX</span>
-              <span className="h-px w-8 bg-[#ff453a]/60" />
-              Compositing Breakdown
+      <div className="mx-auto max-w-[1400px]">
+        <header className="mb-12 grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#FF453A]" aria-hidden="true" />
+              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#FF453A]">
+                VFX / Compositing
+              </span>
             </div>
-            <h2 className="max-w-3xl text-3xl font-semibold tracking-[-0.04em] text-white sm:text-5xl">
-              From plate to final composite.
+            <h2
+              id="vfx-title"
+              className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.045em] sm:text-5xl lg:text-7xl"
+            >
+              From plate
+              <span className="text-zinc-500"> to final composite.</span>
             </h2>
-            <p className="mt-4 max-w-2xl text-sm leading-7 text-zinc-400 sm:text-base">
-              A practical before-and-after view of a compositing pass, presented as a process breakdown rather than a client or performance claim.
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-zinc-400 sm:text-base">
+              A before-and-after view of a compositing pass, showing the visual integration work behind the final image.
             </p>
           </div>
 
@@ -94,27 +92,31 @@ export default function VfxSlider() {
             {SKILLS.map((skill) => (
               <span
                 key={skill}
-                className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-2 text-[10px] font-medium uppercase tracking-[0.16em] text-zinc-300"
+                className="rounded-full border border-white/10 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.15em] text-zinc-400"
               >
                 {skill}
               </span>
             ))}
           </div>
-        </div>
+        </header>
 
         <div
           ref={containerRef}
-          onMouseMove={handleMouseMove}
-          onTouchMove={handleTouchMove}
+          onMouseMove={(event) => {
+            if (isDragging) updatePosition(event.clientX);
+          }}
           onMouseDown={(event) => {
             setIsDragging(true);
             updatePosition(event.clientX);
+          }}
+          onTouchMove={(event) => {
+            if (isDragging && event.touches[0]) updatePosition(event.touches[0].clientX);
           }}
           onTouchStart={(event) => {
             setIsDragging(true);
             if (event.touches[0]) updatePosition(event.touches[0].clientX);
           }}
-          className="relative aspect-[16/8.5] w-full cursor-ew-resize select-none overflow-hidden rounded-2xl border border-white/10 bg-zinc-950 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)] touch-none"
+          className="relative aspect-[16/8.5] w-full select-none overflow-hidden border border-white/10 bg-zinc-950 touch-none"
           aria-label="Interactive VFX before and after comparison"
         >
           <video
@@ -141,14 +143,14 @@ export default function VfxSlider() {
               playsInline
               preload="metadata"
               className="h-full w-full object-cover"
-              style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : '100%' }}
+              style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : "100%" }}
             />
           </div>
 
-          <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/65 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
+          <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-black/70 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-white">
             Before
           </div>
-          <div className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/65 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-md">
+          <div className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/70 px-3 py-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-white">
             After
           </div>
 
@@ -160,24 +162,24 @@ export default function VfxSlider() {
             aria-valuenow={Math.round(sliderPosition)}
             aria-label="VFX comparison slider"
             onKeyDown={handleKeyDown}
-            className="absolute inset-y-0 z-20 w-px -translate-x-1/2 bg-white shadow-[0_0_18px_rgba(0,0,0,0.8)] outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a]"
+            className="absolute inset-y-0 z-20 w-px -translate-x-1/2 bg-white outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A]"
             style={{ left: `${sliderPosition}%` }}
           >
             <div className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-zinc-300 bg-white text-black shadow-2xl">
-              <ArrowLeftRight size={17} strokeWidth={2.2} />
+              <ArrowLeftRight size={17} strokeWidth={2.2} aria-hidden="true" />
             </div>
           </div>
         </div>
 
         <div className="mt-5 flex flex-col gap-3 border-b border-white/[0.07] pb-8 text-xs text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-2">
-            <MousePointer2 size={14} />
+          <p className="flex items-center gap-2">
+            <MousePointer2 size={14} aria-hidden="true" />
             Drag the divider or use ← → keys to inspect the pass.
-          </div>
-          <div className="flex items-center gap-2 text-zinc-400">
-            <Check size={14} className="text-[#ff453a]" />
+          </p>
+          <p className="flex items-center gap-2 text-zinc-400">
+            <Check size={14} className="text-[#FF453A]" aria-hidden="true" />
             Before / after comparison
-          </div>
+          </p>
         </div>
       </div>
     </section>
