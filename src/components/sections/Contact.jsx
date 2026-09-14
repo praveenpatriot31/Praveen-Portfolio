@@ -8,6 +8,8 @@ const fadeUp = (reduce) => ({
   transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
 });
 
+const CV_PATH = "/resume/Praveen_S_Resume.pdf";
+
 export default function ContactChannels() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -48,7 +50,7 @@ export default function ContactChannels() {
                 Email me
               </a>
               <a
-                href="/Praveen_S_Resume.pdf"
+                href={CV_PATH}
                 download
                 className="inline-flex items-center justify-center px-6 py-3.5 border border-white/10 text-white text-sm font-semibold hover:border-white/30 transition-colors duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A]"
               >
