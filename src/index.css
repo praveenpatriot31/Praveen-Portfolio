@@ -46,9 +46,23 @@
     display: block;
   }
 
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  a,
+  button {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  button {
+    font: inherit;
   }
 
   :focus-visible {
@@ -73,6 +87,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    min-height: 44px;
     padding: 1rem 2.5rem;
     background: #FF453A;
     color: #ffffff;
@@ -93,6 +108,24 @@
 
   .btn-primary:active {
     transform: translateY(0px);
+  }
+}
+
+@media (max-width: 767px) {
+  .layout-container {
+    padding-inline: 1.25rem;
+  }
+
+  .section-spacing {
+    padding-block: 4.5rem;
+  }
+
+  h1 {
+    line-height: 0.9;
+  }
+
+  h2 {
+    letter-spacing: 0.22em;
   }
 }
 
