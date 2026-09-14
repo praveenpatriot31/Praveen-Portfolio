@@ -1,38 +1,26 @@
 import { motion } from "framer-motion";
 
 const links = [
-  { title: "Home", href: "#home" },
-  { title: "Projects", href: "#work" },
-  { title: "Services", href: "#services" },
+  { title: "Home", href: "#top" },
+  { title: "Selected Work", href: "#work" },
   { title: "Experience", href: "#experience" },
-  { title: "About", href: "#about" },
   { title: "Contact", href: "#contact" },
 ];
 
-const socials = [
-  {
-    title: "Behance",
-    href: "https://www.behance.net/praveenpatriot",
-  },
-  {
-    title: "LinkedIn",
-    href: "https://www.linkedin.com/",
-  },
-  {
-    title: "Instagram",
-    href: "https://www.instagram.com/",
-  },
+const contact = [
+  { title: "Email", href: "mailto:praveenpatriot31@gmail.com" },
+  { title: "Phone", href: "tel:+919663227511" },
 ];
 
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-[#050505]">
-      <div className="absolute left-1/2 top-0 h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[150px]" />
+      <div className="absolute left-1/2 top-0 h-[350px] w-[350px] -translate-x-1/2 rounded-full bg-red-600/10 blur-[150px]" aria-hidden="true" />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col gap-16 px-6 py-20 lg:flex-row lg:justify-between">
+      <div className="relative mx-auto flex max-w-7xl flex-col gap-12 px-6 py-16 lg:flex-row lg:justify-between lg:gap-16">
         <div className="max-w-md">
           <motion.h2
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-4xl font-black tracking-[6px]"
@@ -44,26 +32,24 @@ export default function Footer() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="mt-6 leading-8 text-zinc-400"
+            transition={{ delay: 0.15 }}
+            className="mt-5 leading-7 text-zinc-400"
           >
-            Creative Visual Designer specializing in Branding,
-            Motion Graphics, UI/UX, Video Editing and VFX
-            Compositing.
+            Creative Visual Designer working across brand, motion, video,
+            VFX compositing and AI-assisted creative production.
           </motion.p>
         </div>
 
         <div>
-          <h3 className="mb-6 text-lg font-semibold">
+          <h3 className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-white">
             Navigation
           </h3>
-
           <div className="space-y-3">
             {links.map((link) => (
               <a
                 key={link.title}
                 href={link.href}
-                className="block text-zinc-400 transition hover:text-red-500"
+                className="block text-zinc-400 transition-colors hover:text-red-500 focus-visible:outline-none focus-visible:text-red-500"
               >
                 {link.title}
               </a>
@@ -72,20 +58,17 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="mb-6 text-lg font-semibold">
-            Connect
+          <h3 className="mb-5 text-sm font-semibold uppercase tracking-[0.2em] text-white">
+            Contact
           </h3>
-
           <div className="space-y-3">
-            {socials.map((social) => (
+            {contact.map((item) => (
               <a
-                key={social.title}
-                href={social.href}
-                target="_blank"
-                rel="noreferrer"
-                className="block text-zinc-400 transition hover:text-red-500"
+                key={item.title}
+                href={item.href}
+                className="block text-zinc-400 transition-colors hover:text-red-500 focus-visible:outline-none focus-visible:text-red-500"
               >
-                {social.title}
+                {item.title}
               </a>
             ))}
           </div>
@@ -93,14 +76,9 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto max-w-7xl border-t border-white/10 px-6 py-6">
-        <div className="flex flex-col items-center justify-between gap-4 text-sm text-zinc-500 md:flex-row">
-          <p>
-            © {new Date().getFullYear()} Praveen. All rights reserved.
-          </p>
-
-          <p>
-            Built with React • Vite • Tailwind CSS • Framer Motion
-          </p>
+        <div className="flex flex-col items-center justify-between gap-3 text-sm text-zinc-500 md:flex-row">
+          <p>© {new Date().getFullYear()} Praveen. All rights reserved.</p>
+          <p>React • Vite • Tailwind CSS • Framer Motion</p>
         </div>
       </div>
     </footer>
