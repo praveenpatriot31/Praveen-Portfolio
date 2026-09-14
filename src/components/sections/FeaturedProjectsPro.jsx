@@ -1,161 +1,124 @@
-import React, { useRef, useEffect } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React from "react";
+import { ArrowUpRight } from "lucide-react";
 
-gsap.registerPlugin(ScrollTrigger);
+const PROJECTS = [
+  {
+    id: "01",
+    title: "Sacumen Design System",
+    category: "UI/UX & BRANDING",
+    type: "Design Architecture",
+    image: "/images/gallery/brand-1.jpg",
+    href: "/projects/sacumen",
+    size: "large",
+  },
+  {
+    id: "02",
+    title: "Studio Identity & Layouts",
+    category: "VISUAL DIRECTION",
+    type: "Brand Systems",
+    image: "/images/gallery/brand-2.jpg",
+    href: "/projects/identity",
+    size: "standard",
+  },
+  {
+    id: "03",
+    title: "Vector Marketing Assets",
+    category: "GRAPHIC DESIGN",
+    type: "Marketing Communication",
+    image: "/images/gallery/brand-3.jpg",
+    href: "/projects/vector-assets",
+    size: "standard",
+  },
+];
 
 export default function FeaturedProjectsPro() {
-  const targetRef = useRef(null);
-  const triggerRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const pin = gsap.fromTo(
-        targetRef.current,
-        { x: 0 },
-        {
-          x: "-400vw",
-          ease: "none",
-          scrollTrigger: {
-            trigger: triggerRef.current,
-            start: "top top",
-            end: "+=3500",
-            scrub: 0.6,
-            pin: true,
-            invalidateOnRefresh: true,
-          },
-        }
-      );
-    }, triggerRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  const projects = [
-    {
-      id: "01",
-      title: "CYBERPUNK NEON DRIFT",
-      category: "3D VFX // COMPOSITING",
-      tag: "C4D / AE / NUKE",
-      img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200",
-    },
-    {
-      id: "02",
-      title: "CHRONO TRIGGER CINEMATIC",
-      category: "MOTION GRAPHICS // DIRECTION",
-      tag: "HOUDINI / REDSHIFT",
-      img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200",
-    },
-    {
-      id: "03",
-      title: "VIRTUAL AURA APPAREL",
-      category: "CGI PRODUCT COMMERCIAL",
-      tag: "BLENDER / CLO3D",
-      img: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?q=80&w=1200",
-    },
-    {
-      id: "04",
-      title: "DYSTOPIAN CITADEL LABS",
-      category: "MATTE PAINTING // ENVIRONMENT",
-      tag: "UNREAL ENGINE 5",
-      img: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?q=80&w=1200",
-    },
-  ];
-
   return (
-    <div ref={triggerRef} className="relative bg-[#050505]">
-      <div className="overflow-hidden relative h-screen w-full">
+    <section
+      id="work"
+      className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-28 text-white md:px-12 lg:py-36 xl:px-24"
+    >
+      <div className="pointer-events-none absolute left-1/2 top-0 h-[420px] w-[720px] -translate-x-1/2 rounded-full bg-[#FF453A]/[0.045] blur-[140px]" />
 
-        <div
-          ref={targetRef}
-          className="flex flex-row relative h-full items-center will-change-transform"
-          style={{ width: "500vw" }}
-        >
-
-          {/* PANEL 1: Intro Splash Frame */}
-          <section className="w-screen h-full flex flex-col justify-center px-10 md:px-16 lg:px-24 bg-[#050505] relative z-10 shrink-0 select-none">
-            <div className="max-w-4xl w-full mx-auto text-left">
-              <div className="flex items-center gap-4 mb-6">
-                <h2 className="text-[12px] font-bold uppercase tracking-[0.4em] text-zinc-500">
-                  PORTFOLIO // INDEX
-                </h2>
-                <span className="w-8 h-px bg-[#FF453A] opacity-60" />
-              </div>
-
-              <h3 className="text-[56px] sm:text-[72px] md:text-[90px] font-black tracking-tighter uppercase leading-[0.95] mb-8 whitespace-nowrap">
-                SELECTED <br />
-                <span
-                  className="text-[#050505] tracking-tighter"
-                  style={{
-                    textShadow: `
-                      -1px -1px 0 rgba(255, 255, 255, 0.25),  
-                       1px -1px 0 rgba(255, 255, 255, 0.25),
-                      -1px  1px 0 rgba(255, 255, 255, 0.25),
-                       1px  1px 0 rgba(255, 255, 255, 0.25)
-                    `
-                  }}
-                >
-                  WORKS
-                </span>
-              </h3>
-
-              <p className="text-zinc-400 text-[16px] max-w-sm font-normal leading-relaxed antialiased">
-                A highly curated digital playground containing commercial motion designs, environment builds, and intricate VFX composites.
-              </p>
-
-              <div className="mt-16 text-zinc-600 font-bold text-[11px] tracking-[0.25em] flex items-center gap-2">
-                SCROLL DOWN TO EXPLORE <span className="animate-pulse">→</span>
-              </div>
+      <div className="relative z-10 mx-auto max-w-[1500px]">
+        <header className="mb-16 flex flex-col justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-end lg:mb-20">
+          <div>
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#FF453A]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#FF453A]">
+                Selected Work
+              </span>
             </div>
-          </section>
+            <h2 className="max-w-4xl text-5xl font-black uppercase leading-[0.9] tracking-[-0.05em] sm:text-6xl lg:text-8xl">
+              Work that shows
+              <br />
+              <span className="text-zinc-500">how I think.</span>
+            </h2>
+          </div>
 
-          {/* PANELS 2-5: The Project Showcase Cards */}
-          {projects.map((project) => (
-            <section
+          <p className="max-w-md text-sm leading-7 text-zinc-400 md:text-base">
+            A focused selection of visual design, brand communication and digital creative work. Each project is presented around the problem, craft and final outcome.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
+          {PROJECTS.map((project, index) => (
+            <a
               key={project.id}
-              className="w-screen h-full flex items-center justify-center bg-[#050505] shrink-0 px-10 md:px-16 lg:px-24"
+              href={project.href}
+              className={`group block rounded-[26px] border border-white/[0.08] bg-white/[0.025] p-3 transition-all duration-500 hover:-translate-y-1 hover:border-[#FF453A]/40 hover:bg-white/[0.04] md:p-4 ${
+                index === 0 ? "lg:col-span-12" : "lg:col-span-6"
+              }`}
             >
-              <div className="w-full max-w-[1300px] max-h-[75vh] grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center bg-zinc-950/20 border border-white/[0.03] p-8 md:p-10 rounded-2xl group relative overflow-hidden backdrop-blur-sm">
+              <div
+                className={`relative overflow-hidden rounded-[19px] bg-zinc-950 ${
+                  index === 0 ? "aspect-[16/7]" : "aspect-[4/3]"
+                }`}
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  className="h-full w-full object-cover opacity-75 grayscale transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.035] group-hover:opacity-100 group-hover:grayscale-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
-                {/* Visual Media Showcase Frame */}
-                <div className="col-span-1 md:col-span-7 h-full w-full min-h-[250px] md:min-h-[400px] overflow-hidden rounded-xl bg-zinc-900 border border-white/[0.05] relative shadow-2xl">
-                  <img
-                    src={project.img}
-                    alt={project.title}
-                    className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-[1s] ease-[0.16,1,0.3,1]"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-black tracking-widest px-3 py-1.5 rounded-md text-zinc-300 font-mono">
+                <div className="absolute left-4 top-4 flex items-center gap-2 rounded-full border border-white/10 bg-black/55 px-3 py-1.5 backdrop-blur-md">
+                  <span className="text-[9px] font-mono tracking-[0.18em] text-[#FF453A]">
                     {project.id}
-                  </div>
-                </div>
-
-                {/* Meta Description Frame */}
-                <div className="col-span-1 md:col-span-5 flex flex-col items-start px-2 text-left select-none">
-                  <span className="text-[11px] font-bold text-[#FF453A] tracking-[0.25em] uppercase block mb-4">
-                    {project.category}
                   </span>
-
-                  <h4 className="text-[28px] md:text-[38px] lg:text-[44px] font-black tracking-tight leading-none text-white mb-6 group-hover:text-[#FF453A] transition-colors duration-300 uppercase">
-                    {project.title}
-                  </h4>
-
-                  <div className="inline-block border border-white/10 rounded-md px-3 py-1 bg-white/[0.02] text-[11px] text-zinc-400 font-mono tracking-wider mb-10">
-                    {project.tag}
-                  </div>
-
-                  <button className="flex items-center gap-3 text-[11px] font-bold tracking-[0.2em] text-zinc-400 group-hover:text-white transition-colors duration-300 uppercase bg-transparent border-none cursor-pointer p-0">
-                    VIEW BREAKDOWN
-                    <span className="transform group-hover:translate-x-1.5 transition-transform duration-300 text-[#FF453A]">→</span>
-                  </button>
+                  <span className="h-1 w-1 rounded-full bg-white/30" />
+                  <span className="text-[9px] font-mono tracking-[0.14em] text-white/60">
+                    CASE STUDY
+                  </span>
                 </div>
 
-              </div>
-            </section>
-          ))}
+                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-6 md:bottom-7 md:left-7 md:right-7">
+                  <div>
+                    <span className="mb-2 block text-[9px] font-bold uppercase tracking-[0.25em] text-[#FF453A]">
+                      {project.category}
+                    </span>
+                    <h3 className={`font-black uppercase leading-none tracking-[-0.035em] text-white ${index === 0 ? "text-3xl sm:text-5xl lg:text-6xl" : "text-2xl sm:text-3xl"}`}>
+                      {project.title}
+                    </h3>
+                    <p className="mt-3 text-[10px] font-mono uppercase tracking-[0.14em] text-white/50">
+                      {project.type}
+                    </p>
+                  </div>
 
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 bg-black/40 text-white backdrop-blur-md transition-all duration-300 group-hover:border-[#FF453A] group-hover:bg-[#FF453A] group-hover:text-black">
+                    <ArrowUpRight size={18} strokeWidth={1.8} />
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-[10px] font-mono uppercase tracking-[0.18em] text-zinc-600 sm:flex-row">
+          <span>More work available on request</span>
+          <span>Design / Motion / VFX / AI-assisted creative</span>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
