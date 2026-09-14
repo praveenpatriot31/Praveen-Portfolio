@@ -1,52 +1,42 @@
 import React, { useEffect, useState, memo } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 
-const TOKENS = {
-  colors: {
-    bg: "#050505",
-    accent: "#FF453A",
-    track: "rgba(255, 255, 255, 0.04)",
-  },
-  transitions: {
-    panelExit: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
-    contentExit: { duration: 0.4, ease: "easeOut" }
-  }
-};
-
 const Loader = memo(() => {
   const [loading, setLoading] = useState(true);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
-    // 1. Core Scroll Lock Implementation
-    if (loading) {
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-    }
+    if (!loading) return undefined;
 
-    // 2. Window Asset Resolution Listener
-    const handleLoad = () => {
-      // Small buffer to guarantee DOM stability before firing entrance transitions
-      const delay = setTimeout(() => {
-        setLoading(false);
-        document.body.style.overflow = '';
-        document.documentElement.style.overflow = '';
-      }, 600);
-      return () => clearTimeout(delay);
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousDocumentOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    let releaseTimer;
+    let safetyTimer;
+
+    const release = () => {
+      clearTimeout(safetyTimer);
+      clearTimeout(releaseTimer);
+      releaseTimer = setTimeout(() => setLoading(false), 500);
     };
 
     if (document.readyState === 'complete') {
-      handleLoad();
+      release();
     } else {
-      window.addEventListener('load', handleLoad);
-      // Fail-safe protection boundary (Max threshold 4 seconds)
-      const safetyTimeout = setTimeout(handleLoad, 4000);
-      
-      return () => {
-        window.removeEventListener('load', handleLoad);
-        clearTimeout(safetyTimeout);
-      };
+      window.addEventListener('load', release, { once: true });
+      safetyTimer = setTimeout(release, 4000);
     }
+
+    return () => {
+      window.removeEventListener('load', release);
+      clearTimeout(releaseTimer);
+      clearTimeout(safetyTimer);
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousDocumentOverflow;
+    };
   }, [loading]);
 
   return (
@@ -59,37 +49,32 @@ const Loader = memo(() => {
           initial={{ opacity: 1 }}
           exit={
             shouldReduceMotion
-              ? { opacity: 0, transition: { duration: 0.4 } }
-              : { y: "-100%", transition: TOKENS.transitions.panelExit }
+              ? { opacity: 0, transition: { duration: 0.3 } }
+              : { y: '-100%', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
           }
-          className="fixed inset-0 z-[10000] bg-[#050505] flex flex-col items-center justify-center will-change-transform"
+          className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-[#050505] will-change-transform"
         >
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -16, transition: TOKENS.transitions.contentExit }}
+            exit={{ opacity: 0, y: -12, transition: { duration: 0.3, ease: 'easeOut' } }}
             className="flex flex-col items-center gap-5"
           >
-            {/* Identity Brand Signature */}
-            <span 
-              className="text-white text-[13px] font-bold uppercase tracking-[0.35em] antialiased select-none"
-            >
+            <span className="select-none text-[13px] font-bold uppercase tracking-[0.35em] text-white antialiased">
               Praveen S.
             </span>
-            
-            {/* Minimalist Interpolating Progress Bar */}
-            <div 
-              className="w-16 h-[2px] overflow-hidden rounded-full relative"
-              style={{ backgroundColor: TOKENS.colors.track }}
+
+            <div
+              className="relative h-[2px] w-16 overflow-hidden rounded-full bg-white/[0.04]"
+              aria-hidden="true"
             >
-              <motion.div 
-                className="h-full absolute left-0 top-0 rounded-full"
-                style={{ backgroundColor: TOKENS.colors.accent }}
-                initial={{ width: "0%" }}
-                animate={{ width: "100%" }}
-                transition={{ 
-                  duration: shouldReduceMotion ? 0.8 : 1.6, 
-                  ease: [0.22, 1, 0.36, 1] 
+              <motion.div
+                className="absolute left-0 top-0 h-full rounded-full bg-[#FF453A]"
+                initial={{ width: '0%' }}
+                animate={{ width: '100%' }}
+                transition={{
+                  duration: shouldReduceMotion ? 0.6 : 1.3,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
               />
             </div>
@@ -100,5 +85,5 @@ const Loader = memo(() => {
   );
 });
 
-Loader.displayName = "Loader";
+Loader.displayName = 'Loader';
 export default Loader;
