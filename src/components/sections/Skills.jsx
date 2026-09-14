@@ -1,142 +1,176 @@
 import React, { memo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
-const CV_SKILLS_DATA = [
+const SKILL_GROUPS = [
   {
-    category: "Core Competencies",
-    icon: "⚡",
-    isAi: false,
-    items: ["Creative Visual Design", "Motion Graphics", "Video Production", "VFX Compositing", "AI Content Creation", "Brand Design", "Visual Storytelling"],
+    number: "01",
+    title: "Design & Visual Communication",
+    description: "The creative foundation behind brand, campaign and digital communication work.",
+    items: [
+      "Graphic Design",
+      "Brand Design",
+      "Visual Storytelling",
+      "Layout & Composition",
+      "Marketing Creatives",
+      "Presentation Design"
+    ]
   },
   {
-    category: "Creative Engine Tools",
-    icon: "⚙️",
-    isAi: false,
-    items: ["Adobe Photoshop", "Adobe Illustrator", "Adobe After Effects", "Adobe Premiere Pro", "Figma", "Nuke", "DaVinci Resolve"],
+    number: "02",
+    title: "Motion, Video & VFX",
+    description: "Production capabilities across editing, motion design and compositing workflows.",
+    items: [
+      "Video Editing",
+      "Motion Graphics",
+      "VFX Compositing",
+      "Roto & Paint Prep",
+      "Post-Production",
+      "Content Production"
+    ]
   },
   {
-    category: "Neural Nodes & GenAI",
-    icon: "🧠",
-    isAi: true,
-    items: ["Higgsfield", "Runway", "Midjourney", "Kling AI", "Veo 3", "Seedance", "Adobe Firefly", "ChatGPT"],
+    number: "03",
+    title: "Creative Software",
+    description: "A cross-disciplinary production stack for design, video, compositing and 3D work.",
+    items: [
+      "Photoshop",
+      "Illustrator",
+      "After Effects",
+      "Premiere Pro",
+      "Nuke",
+      "DaVinci Resolve",
+      "Blender",
+      "Unreal Engine"
+    ]
   },
+  {
+    number: "04",
+    title: "AI-Assisted Creative",
+    description: "Generative tools used to support ideation, exploration and production—not replace creative judgment.",
+    ai: true,
+    items: [
+      "Higgsfield",
+      "Runway",
+      "Midjourney",
+      "Kling AI",
+      "Veo",
+      "Adobe Firefly",
+      "ChatGPT"
+    ]
+  }
 ];
 
-const STAGGER_CONTAINER = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.06,
-    },
-  },
-};
-
-const FADE_UP_VARIANT = {
-  hidden: { opacity: 0, y: 20 },
+const FADE_UP = {
+  hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-  },
+    transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] }
+  }
 };
 
-const SkillTag = memo(({ name, isAi, shouldReduceMotion }) => {
-  return (
-    <motion.li
-      whileHover={shouldReduceMotion ? {} : { y: -3, scale: 1.03 }}
-      className={`px-4 py-2.5 rounded-xl text-[13px] font-medium tracking-wide transition-all duration-300 select-none will-change-transform cursor-pointer border ${
-        isAi
-          ? "bg-[#FF453A]/[0.02] border-[#FF453A]/30 text-zinc-100 hover:text-white hover:bg-[#FF453A]/[0.1] hover:border-[#FF453A] hover:shadow-[0_0_25px_rgba(255,69,58,0.18)]"
-          : "bg-zinc-900/40 border-white/[0.04] text-zinc-400 hover:text-white hover:bg-zinc-800/60 hover:border-white/20"
-      }`}
-    >
-      <span className="flex items-center gap-2">
-        {isAi && <span className="w-1.5 h-1.5 rounded-full bg-[#FF453A] animate-pulse" aria-hidden="true" />}
-        {name}
-      </span>
-    </motion.li>
-  );
-});
+const SkillTag = memo(({ name, ai, reduceMotion }) => (
+  <motion.li
+    whileHover={reduceMotion ? {} : { y: -2 }}
+    className={`rounded-full border px-4 py-2.5 text-[12px] font-medium tracking-wide transition-colors duration-300 ${
+      ai
+        ? "border-[#FF453A]/25 bg-[#FF453A]/[0.04] text-zinc-200 hover:border-[#FF453A]/60 hover:bg-[#FF453A]/[0.08]"
+        : "border-white/[0.08] bg-white/[0.02] text-zinc-400 hover:border-white/[0.18] hover:bg-white/[0.05] hover:text-white"
+    }`}
+  >
+    <span className="flex items-center gap-2">
+      {ai && <span className="h-1.5 w-1.5 rounded-full bg-[#FF453A]" aria-hidden="true" />}
+      {name}
+    </span>
+  </motion.li>
+));
 
 SkillTag.displayName = "SkillTag";
 
 export default function SkillsMatrix() {
-  const shouldReduceMotion = useReducedMotion();
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section 
+    <section
       id="skills"
-      className="w-full bg-[#050505] py-32 border-t border-white/[0.02] overflow-hidden relative"
-      aria-label="Expertise Interactive Toolkit Matrix"
+      className="relative w-full overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-28 md:px-12 lg:px-24 lg:py-40"
+      aria-label="Skills and tools"
     >
-      {/* Dynamic Background Aura Glow */}
-      <div className="absolute inset-0 pointer-events-none z-0 bg-[radial-gradient(circle_at_70%_40%,rgba(255,69,58,0.03),transparent_50%)]" />
+      <div className="pointer-events-none absolute right-0 top-1/4 h-96 w-96 rounded-full bg-[#FF453A]/[0.035] blur-3xl" />
 
-      <div className="w-full max-w-[1340px] mx-auto px-8 md:px-12 lg:px-16 relative z-10">
-        <motion.div 
-          variants={STAGGER_CONTAINER}
+      <div className="relative mx-auto max-w-[1500px]">
+        <motion.div
+          variants={FADE_UP}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start"
+          viewport={{ once: true, margin: "-80px" }}
+          className="mb-16 grid gap-8 lg:grid-cols-12 lg:items-end"
         >
-          
-          {/* LEFT SYSTEM DASHBOARD PANEL CONTROLS */}
-          <motion.div 
-            variants={FADE_UP_VARIANT}
-            className="lg:col-span-4 flex flex-col items-start lg:sticky lg:top-32 self-start text-left select-none"
-          >
-            <div className="flex items-center gap-4 mb-4">
-              <span className="text-[12px] font-black uppercase tracking-[0.4em] text-[#FF453A]">
-                SYSTEM // CORE
+          <div className="lg:col-span-8">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="h-px w-8 bg-[#FF453A]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.35em] text-[#FF453A]">
+                Capabilities & Tools
               </span>
-              <div className="w-8 h-px bg-[#FF453A]/50" />
             </div>
-
-            <h2 className="text-[38px] md:text-[46px] font-black tracking-tighter text-white uppercase leading-none mb-6">
-              EXPERTISE<br />TOOLKIT.
+            <h2 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-[-0.04em] text-white sm:text-5xl lg:text-7xl">
+              One creative stack.
+              <span className="text-zinc-500"> Multiple disciplines.</span>
             </h2>
-            
-            <p className="text-zinc-500 text-[14px] font-normal leading-relaxed max-w-xs">
-              Curated workspace overview documenting production workflows, modern visualization suites, and generative neural assets.
-            </p>
-          </motion.div>
-
-          {/* RIGHT VIEWPORT DISPLAY PANEL */}
-          <div className="lg:col-span-8 flex flex-col gap-8 w-full">
-            {CV_SKILLS_DATA.map((group, index) => (
-              <motion.div
-                key={index}
-                variants={FADE_UP_VARIANT}
-                className="flex flex-col items-start w-full border border-white/[0.03] bg-zinc-950/20 rounded-2xl p-8 backdrop-blur-sm shadow-2xl relative group overflow-hidden"
-              >
-                {/* Top Console Tray Accents */}
-                <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
-                
-                <div className="flex items-center justify-between w-full mb-6 pb-4 border-b border-white/[0.03]">
-                  <h3 className="text-[11px] font-bold uppercase tracking-[0.25em] text-zinc-500 font-mono flex items-center gap-2 select-none">
-                    <span className="text-zinc-600">{group.icon}</span> {group.category}
-                  </h3>
-                  <span className="text-[10px] text-zinc-600 font-mono tracking-widest hidden sm:inline select-none">
-                    NODE // 0{index + 1}
-                  </span>
-                </div>
-
-                <ul className="flex flex-wrap gap-3 m-0 p-0 list-none w-full">
-                  {group.items.map((skill, sIdx) => (
-                    <SkillTag
-                      key={sIdx}
-                      name={skill}
-                      isAi={group.isAi}
-                      shouldReduceMotion={shouldReduceMotion}
-                    />
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
           </div>
-
+          <p className="max-w-md text-sm leading-7 text-zinc-400 lg:col-span-4 lg:justify-self-end">
+            Design, motion, video, VFX and AI-assisted production brought together
+            into a practical visual workflow.
+          </p>
         </motion.div>
+
+        <div className="grid gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] md:grid-cols-2">
+          {SKILL_GROUPS.map((group, index) => (
+            <motion.article
+              key={group.number}
+              variants={FADE_UP}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ delay: index * 0.05 }}
+              className="group relative min-h-[300px] bg-[#090909] p-7 sm:p-9 lg:p-11"
+            >
+              <div className="mb-10 flex items-start justify-between">
+                <span className="font-mono text-[10px] tracking-[0.25em] text-[#FF453A]">
+                  {group.number}
+                </span>
+                {group.ai && (
+                  <span className="rounded-full border border-[#FF453A]/20 px-2.5 py-1 text-[8px] font-bold uppercase tracking-[0.2em] text-[#FF453A]">
+                    AI-assisted
+                  </span>
+                )}
+              </div>
+
+              <h3 className="max-w-md text-xl font-bold uppercase tracking-tight text-white sm:text-2xl">
+                {group.title}
+              </h3>
+              <p className="mt-3 max-w-lg text-sm leading-6 text-zinc-500">
+                {group.description}
+              </p>
+
+              <ul className="mt-8 flex flex-wrap gap-2.5 p-0 list-none">
+                {group.items.map((skill) => (
+                  <SkillTag
+                    key={skill}
+                    name={skill}
+                    ai={group.ai}
+                    reduceMotion={reduceMotion}
+                  />
+                ))}
+              </ul>
+            </motion.article>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-col gap-3 border-t border-white/[0.06] pt-6 text-[10px] uppercase tracking-[0.18em] text-zinc-600 sm:flex-row sm:justify-between">
+          <span>Core disciplines first</span>
+          <span>Tools support the work</span>
+        </div>
       </div>
     </section>
   );
