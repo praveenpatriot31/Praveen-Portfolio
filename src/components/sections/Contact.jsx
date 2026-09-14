@@ -1,108 +1,90 @@
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
-
-const fadeUp = (reduce) => ({
-  initial: { opacity: 0, y: reduce ? 0 : 18 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-40px" },
-  transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
-});
 
 const CV_PATH = "/resume/Praveen_S_Resume.pdf";
 
 export default function ContactChannels() {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
     <section
       id="contact"
-      className="w-full bg-[#050505] py-28 md:py-36 px-6 md:px-12 lg:px-20 border-t border-white/[0.05] overflow-hidden"
-      aria-label="Contact"
+      className="w-full border-b border-white/[0.06] bg-[#050505] px-6 py-24 text-white md:px-12 lg:px-24 lg:py-32"
+      aria-labelledby="contact-title"
     >
-      <div className="max-w-[1200px] mx-auto">
-        <div className="flex items-center gap-4 mb-10">
-          <span className="text-[10px] font-semibold uppercase tracking-[0.32em] text-zinc-600">
-            07 / Contact
+      <div className="mx-auto max-w-[1400px]">
+        <header className="mb-14 flex items-center gap-4">
+          <span className="text-xs font-semibold uppercase tracking-[0.28em] text-zinc-400">
+            Contact
           </span>
           <span className="h-px w-10 bg-[#FF453A]" aria-hidden="true" />
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-14 lg:gap-24 items-end">
-          <motion.div {...fadeUp(shouldReduceMotion)}>
-            <p className="text-sm uppercase tracking-[0.22em] text-[#FF453A] font-semibold mb-5">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-20 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.24em] text-[#FF453A]">
               Available for opportunities
             </p>
-            <h2 className="text-5xl sm:text-6xl md:text-7xl font-medium tracking-[-0.055em] leading-[0.95] text-white">
+            <h2
+              id="contact-title"
+              className="max-w-4xl text-5xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-6xl lg:text-8xl"
+            >
               Let&apos;s make
-              <br />
-              <span className="text-zinc-500">something good.</span>
+              <span className="block text-zinc-500">something good.</span>
             </h2>
-            <p className="mt-7 max-w-2xl text-base md:text-lg leading-8 text-zinc-400">
-              Open to creative visual design, motion, video, VFX compositing and
-              AI-assisted creative production opportunities.
+            <p className="mt-7 max-w-2xl text-sm leading-7 text-zinc-400 sm:text-base">
+              Open to creative visual design, motion, video, VFX compositing and AI-assisted creative production opportunities.
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a
                 href="mailto:praveenpatriot31@gmail.com"
-                className="inline-flex items-center justify-center px-6 py-3.5 bg-white text-black text-sm font-semibold hover:bg-[#FF453A] hover:text-white transition-colors duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A]"
+                className="inline-flex items-center justify-center rounded-sm bg-white px-6 py-3.5 text-sm font-semibold text-black transition-colors duration-300 hover:bg-[#FF453A] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A]"
               >
                 Email me
               </a>
               <a
                 href={CV_PATH}
                 download
-                className="inline-flex items-center justify-center px-6 py-3.5 border border-white/10 text-white text-sm font-semibold hover:border-white/30 transition-colors duration-300 rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A]"
+                className="inline-flex items-center justify-center rounded-sm border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:border-white/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A]"
               >
                 Download CV
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            {...fadeUp(shouldReduceMotion)}
-            className="border-t border-white/[0.08] pt-7"
-          >
-            <div className="grid gap-7">
+          <div className="border-t border-white/10 pt-7 lg:col-span-4">
+            <div className="space-y-7">
               <div>
-                <div className="text-[10px] uppercase tracking-[0.25em] text-zinc-600 mb-2">
-                  Email
-                </div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">Email</p>
                 <a
                   href="mailto:praveenpatriot31@gmail.com"
-                  className="text-lg text-zinc-200 hover:text-[#FF453A] transition-colors break-all"
+                  className="mt-2 block break-all text-base text-zinc-200 transition-colors hover:text-[#FF453A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A] sm:text-lg"
                 >
                   praveenpatriot31@gmail.com
                 </a>
               </div>
 
               <div>
-                <div className="text-[10px] uppercase tracking-[0.25em] text-zinc-600 mb-2">
-                  Phone
-                </div>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">Phone</p>
                 <a
                   href="tel:+919663227511"
-                  className="text-lg text-zinc-200 hover:text-[#FF453A] transition-colors"
+                  className="mt-2 block text-base text-zinc-200 transition-colors hover:text-[#FF453A] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A] sm:text-lg"
                 >
                   +91 96632 27511
                 </a>
               </div>
 
               <div>
-                <div className="text-[10px] uppercase tracking-[0.25em] text-zinc-600 mb-2">
-                  Base
-                </div>
-                <p className="text-lg text-zinc-200">Bengaluru, India</p>
-                <p className="mt-1 text-sm text-zinc-500">Open to remote & relocation opportunities.</p>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-600">Base</p>
+                <p className="mt-2 text-base text-zinc-200 sm:text-lg">Bengaluru, India</p>
+                <p className="mt-1 text-sm leading-6 text-zinc-500">Open to remote and relocation opportunities.</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
-        <div className="mt-20 pt-7 border-t border-white/[0.05] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-[10px] uppercase tracking-[0.2em] text-zinc-600">
+        <footer className="mt-16 flex flex-col gap-3 border-t border-white/[0.06] pt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-600 sm:flex-row sm:items-center sm:justify-between">
           <span>Praveen S. — Creative Visual Designer</span>
           <span>Design / Motion / VFX / AI</span>
-        </div>
+        </footer>
       </div>
     </section>
   );
