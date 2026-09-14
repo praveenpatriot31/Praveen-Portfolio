@@ -21,16 +21,33 @@ const Testimonials = lazy(() => import("./components/sections/Testimonials"));
 const Contact = lazy(() => import("./components/sections/Contact"));
 
 function Loading() {
-  return <div className="min-h-screen flex items-center justify-center bg-[#080808] text-white">Loading...</div>;
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-[#080808] text-white" role="status" aria-live="polite">
+      Loading…
+    </div>
+  );
 }
 
 export default function App() {
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return undefined;
+
     const lenis = new Lenis({ smoothWheel: true });
-    const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
-    requestAnimationFrame(raf);
+    let frameId;
+
+    const raf = (time) => {
+      lenis.raf(time);
+      frameId = requestAnimationFrame(raf);
+    };
+
+    frameId = requestAnimationFrame(raf);
     lenis.on("scroll", ScrollTrigger.update);
-    return () => lenis.destroy();
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      lenis.destroy();
+    };
   }, []);
 
   return (
