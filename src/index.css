@@ -156,10 +156,6 @@
 }
 
 @layer utilities {
-  .font-poppins {
-    font-family: 'Inter', system-ui, sans-serif;
-  }
-
   .text-readable {
     color: var(--text-secondary);
     font-size: 1rem;
