@@ -37,7 +37,7 @@ function ProjectVisual({ visual }) {
     <div className="relative h-full w-full overflow-hidden bg-[#111]" style={{ background: visualContent[0], color: visualContent[2] === "WHOOSH" ? "#101820" : "#fff" }}>
       <div className="absolute inset-0 opacity-60" style={{ background: `radial-gradient(circle at 75% 25%, ${visualContent[1]}33, transparent 38%), linear-gradient(135deg, transparent 30%, ${visualContent[1]}12)` }} />
       <div className="absolute left-8 top-8 sm:left-12 sm:top-12">
-        <p className="text-[10px] font-bold uppercase tracking-[0.24em]" style={{ color: visualContent[1] }}>Selected work</p>
+        <p className="text-[10px] font-bold uppercase tracking-[0.24em]" style={{ color: visualContent[1] }}>Project preview</p>
         <p className="mt-5 text-[clamp(2.5rem,6vw,5.5rem)] font-black uppercase leading-[0.84] tracking-[-0.06em]">{visualContent[2]}</p>
         <p className="mt-4 max-w-[240px] text-xs font-medium uppercase tracking-[0.14em] opacity-55">{visualContent[3]}</p>
       </div>
@@ -82,7 +82,7 @@ export default function FeaturedProjectsPro() {
           ))}
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-sm leading-6 text-zinc-500">Selected work is presented with supporting case-study context below.</div>
+        <div className="mt-10 border-t border-white/10 pt-6 text-sm leading-6 text-zinc-500">Preview panels are presentation treatments; detailed case-study evidence is shown below where available.</div>
       </div>
     </section>
   );
