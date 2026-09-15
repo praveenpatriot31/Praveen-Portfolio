@@ -67,7 +67,7 @@ const EXPERIENCE = [
   },
   {
     id: "05",
-    company: "MICROGENESIS SOFTTECH PVT. LTD.",
+    company: "MICROGENSIS CADSOFT PVT. LTD.",
     role: "Graphic Designer",
     period: "Nov 2021 — May 2022",
     location: "Bengaluru, India",
