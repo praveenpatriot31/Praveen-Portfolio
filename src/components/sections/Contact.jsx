@@ -35,7 +35,9 @@ export default function ContactChannels() {
 
             <div className="mt-9 flex flex-wrap gap-3">
               <a
-                href="mailto:praveenpatriot31@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=praveenpatriot31@gmail.com"
+                target="_blank"
+                rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-sm bg-white px-6 py-3.5 text-sm font-semibold text-black transition-colors duration-300 hover:bg-[#FF453A] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A]"
               >
                 Email me
