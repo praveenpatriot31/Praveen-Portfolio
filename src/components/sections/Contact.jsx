@@ -47,6 +47,14 @@ export default function ContactChannels() {
               >
                 Download CV
               </a>
+              <a
+                href="https://www.linkedin.com/in/praveen-s-999491241"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-sm border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition-colors duration-300 hover:border-white/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF453A]"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
 
