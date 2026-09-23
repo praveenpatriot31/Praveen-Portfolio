@@ -11,6 +11,20 @@ const PROJECTS = [
 ];
 
 function ProjectVisual({ visual }) {
+  if (visual === "vfx") {
+    return (
+      <video
+        className="h-full w-full object-cover"
+        src="/videos/Final_Output.mp4"
+        muted
+        autoPlay
+        loop
+        playsInline
+        preload="metadata"
+      />
+    );
+  }
+
   if (visual === "paint-o") {
     return (
       <div className="relative h-full w-full overflow-hidden bg-[#f4f2ed] text-[#0f1e3a]">
