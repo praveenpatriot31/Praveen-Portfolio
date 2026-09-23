@@ -109,8 +109,6 @@ function SocialCampaigns() {
         </div>
       </div>
     </section>
-    <SocialCampaigns />
-    </>
   );
 }
 
@@ -157,5 +155,7 @@ export default function FeaturedProjectsPro() {
         </div>
       </div>
     </section>
+    <SocialCampaigns />
+    </>
   );
 }
