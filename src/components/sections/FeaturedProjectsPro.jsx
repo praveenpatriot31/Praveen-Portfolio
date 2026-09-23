@@ -109,11 +109,14 @@ function SocialCampaigns() {
         </div>
       </div>
     </section>
+    <SocialCampaigns />
+    </>
   );
 }
 
 export default function FeaturedProjectsPro() {
   return (
+    <>
     <section id="work" className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-24 text-white md:px-12 md:py-28 lg:px-16 xl:px-20" aria-labelledby="selected-work-title">
       <div className="mx-auto max-w-[1440px]">
         <header className="mb-12 flex flex-col justify-between gap-7 border-b border-white/10 pb-8 md:flex-row md:items-end lg:mb-14">
@@ -123,8 +126,8 @@ export default function FeaturedProjectsPro() {
               Selected <span className="text-zinc-500">projects.</span>
             </h2>
           </div>
-          <p className="max-w-md text-base leading-7 text-zinc-300">
-            A focused portfolio of brand systems, digital growth work, visual communication, motion, VFX and AI-assisted creative.
+          <p className="max-w-md text-sm leading-6 text-zinc-400 sm:text-base sm:leading-7">
+            Brand systems, digital growth, campaign design, motion, VFX and AI-assisted creative — selected for commercial relevance.
           </p>
         </header>
 
@@ -148,8 +151,9 @@ export default function FeaturedProjectsPro() {
           ))}
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6 text-sm leading-6 text-zinc-500">
-          Detailed case-study evidence is shown below where available; concept-labelled work remains identified as concept/exploration.
+        <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-5 text-sm leading-6 text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
+          <span>Case-study evidence appears below where available.</span>
+          <span className="text-zinc-600">Concept-labelled work is clearly identified.</span>
         </div>
       </div>
     </section>
