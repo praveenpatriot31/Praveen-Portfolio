@@ -74,6 +74,44 @@ function ProjectVisual({ visual }) {
   );
 }
 
+function SocialCampaigns() {
+  const campaigns = [
+    ["Corporate Campaign", "Sacumen AI Entrepreneurs", "Startup challenge campaign visual and event communication."],
+    ["Leadership Content", "Forbes Leadership", "Editorial-style social creative for leadership communication."],
+    ["Product Campaign", "Javik Karnataka", "Honey, jaggery and farmer-focused product storytelling."],
+    ["Regional Campaign", "Kannada Rajyotsava", "Cultural communication using Kannada typography and heritage imagery."],
+    ["Healthcare Awareness", "Eye Care Campaign", "Informational healthcare communication with clear hierarchy."],
+    ["Education Campaign", "World Children’s Day", "Family-friendly educational social communication."],
+    ["Entertainment / Motion", "Batman vs Zombies", "Stop-motion promotion with dramatic typography and character imagery."],
+    ["Social Awareness", "Human Rights Day", "Awareness creative focused on message hierarchy and civic communication."],
+  ];
+
+  return (
+    <section className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-20 text-white md:px-12 md:py-24 lg:px-16 xl:px-20" aria-labelledby="social-campaigns-title">
+      <div className="mx-auto max-w-[1440px]">
+        <header className="mb-10 flex flex-col justify-between gap-6 border-b border-white/10 pb-7 md:flex-row md:items-end">
+          <div>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#d9b98a]">Campaign work</p>
+            <h2 id="social-campaigns-title" className="text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-6xl">Social Media &amp; Campaign Design</h2>
+          </div>
+          <p className="max-w-md text-sm leading-6 text-zinc-400">Selected social creatives spanning corporate, product, education, healthcare, cultural and entertainment communication.</p>
+        </header>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {campaigns.map(([category, title, description]) => (
+            <article key={title} className="rounded-[16px] border border-white/[0.10] bg-white/[0.02] p-5 transition-colors duration-300 hover:border-white/20">
+              <div className="mb-10 flex h-28 items-end rounded-[12px] border border-white/[0.06] bg-[radial-gradient(circle_at_70%_25%,rgba(217,185,138,0.28),transparent_42%),linear-gradient(135deg,#141414,#090909)] p-4">
+                <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d9b98a]">{category}</span>
+              </div>
+              <h3 className="text-lg font-bold tracking-[-0.02em]">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-400">{description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function FeaturedProjectsPro() {
   return (
     <section id="work" className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-24 text-white md:px-12 md:py-28 lg:px-16 xl:px-20" aria-labelledby="selected-work-title">
