@@ -31,6 +31,7 @@ export default function HeroClean() {
           <div className="hidden items-center gap-8 text-[11px] font-semibold uppercase tracking-[.22em] text-white/55 md:flex">
             <a href="#work" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Work</a>
             <a href="#social-campaigns-title" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Campaigns</a>
+            <a href="#logo-identity" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Identity</a>
             <a href="#experience" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Experience</a>
             <a href="#contact" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Contact</a>
           </div>
