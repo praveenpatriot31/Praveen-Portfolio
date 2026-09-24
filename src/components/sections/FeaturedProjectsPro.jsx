@@ -76,6 +76,7 @@ function ProjectVisual({ visual }) {
 
 function SocialCampaigns() {
   const campaigns = [
+    ["B2B Product Campaign", "A2Z POS", "Product marketing campaign combining POS technology, lifestyle art direction, feature communication and industry-focused messaging."],
     ["Corporate Campaign", "Sacumen AI Entrepreneurs", "Startup challenge campaign visual and event communication."],
     ["Leadership Content", "Forbes Leadership", "Editorial-style social creative for leadership communication."],
     ["Product Campaign", "Javik Karnataka", "Honey, jaggery and farmer-focused product storytelling."],
@@ -94,13 +95,13 @@ function SocialCampaigns() {
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#d9b98a]">Campaign work</p>
             <h2 id="social-campaigns-title" className="text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-6xl">Social Media &amp; Campaign Design</h2>
           </div>
-          <p className="max-w-md text-sm leading-6 text-zinc-400">Selected social creatives spanning corporate, product, education, healthcare, cultural and entertainment communication.</p>
+          <p className="max-w-md text-sm leading-6 text-zinc-400">Selected campaign work spanning B2B product marketing, corporate, product, education, healthcare, cultural and entertainment communication.</p>
         </header>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {campaigns.map(([category, title, description]) => (
             <article key={title} className="rounded-[16px] border border-white/[0.10] bg-white/[0.02] p-5 transition-colors duration-300 hover:border-white/20">
-              <div className="mb-10 flex h-28 items-end rounded-[12px] border border-white/[0.06] bg-[radial-gradient(circle_at_70%_25%,rgba(217,185,138,0.28),transparent_42%),linear-gradient(135deg,#141414,#090909)] p-4">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d9b98a]">{category}</span>
+              <div className={`mb-10 flex h-28 items-end rounded-[12px] border border-white/[0.06] p-4 ${title === "A2Z POS" ? "bg-[radial-gradient(circle_at_70%_25%,rgba(17,97,231,0.45),transparent_42%),linear-gradient(135deg,#0a1424,#07101d)]" : "bg-[radial-gradient(circle_at_70%_25%,rgba(217,185,138,0.28),transparent_42%),linear-gradient(135deg,#141414,#090909)]"}`}>
+                <span className={`text-[10px] font-semibold uppercase tracking-[0.18em] ${title === "A2Z POS" ? "text-[#4f8cff]" : "text-[#d9b98a]"}`}>{category}</span>
               </div>
               <h3 className="text-lg font-bold tracking-[-0.02em]">{title}</h3>
               <p className="mt-2 text-sm leading-6 text-zinc-400">{description}</p>
@@ -128,8 +129,7 @@ function LogoIdentity() {
       <div className="mx-auto max-w-[1440px]">
         <header className="mb-10 flex flex-col justify-between gap-6 border-b border-white/10 pb-7 md:flex-row md:items-end">
           <div><p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#d9b98a]">Identity work</p><h2 id="logo-identity-title" className="text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-6xl">Logo &amp; Identity Design</h2></div>
-          <p className="max-w-md text-sm leading-6 text-zinc-400">Selected logo and identity work, presented separately from campaign and digital projects.</p>
-        </header>
+          <p className="max-w-md text-sm leading-6 text-zinc-400">Selected logo and identity work, presented separately from campaign and digital projects.</p></div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {logos.map(([name, type]) => <article key={name} className="flex min-h-[150px] flex-col justify-between rounded-[16px] border border-white/[0.10] bg-white/[0.02] p-5 transition-colors hover:border-white/20"><div className="flex h-20 items-center justify-center rounded-[12px] border border-white/[0.06] bg-white/[0.025] text-xl font-black tracking-[-0.04em] text-white/80">{name}</div><div><p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d9b98a]">{type}</p><p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-zinc-600">Selected logo work</p></div></article>)}
         </div>
