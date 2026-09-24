@@ -112,6 +112,32 @@ function SocialCampaigns() {
   );
 }
 
+function LogoIdentity() {
+  const logos = [
+    ["Belaku", "Identity exploration"],
+    ["Jaivik", "Brand identity"],
+    ["Samachar", "Logo / icon system"],
+    ["Chimple", "Brand mark"],
+    ["SELCO", "Identity work"],
+    ["Elytri", "Logo identity"],
+    ["Logo Studies", "Selected explorations"],
+    ["Identity Archive", "Additional logo work"],
+  ];
+  return (
+    <section id="logo-identity" className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-20 text-white md:px-12 md:py-24 lg:px-16 xl:px-20" aria-labelledby="logo-identity-title">
+      <div className="mx-auto max-w-[1440px]">
+        <header className="mb-10 flex flex-col justify-between gap-6 border-b border-white/10 pb-7 md:flex-row md:items-end">
+          <div><p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#d9b98a]">Identity work</p><h2 id="logo-identity-title" className="text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-6xl">Logo &amp; Identity Design</h2></div>
+          <p className="max-w-md text-sm leading-6 text-zinc-400">Selected logo and identity work, presented separately from campaign and digital projects.</p>
+        </header>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {logos.map(([name, type]) => <article key={name} className="flex min-h-[150px] flex-col justify-between rounded-[16px] border border-white/[0.10] bg-white/[0.02] p-5 transition-colors hover:border-white/20"><div className="flex h-20 items-center justify-center rounded-[12px] border border-white/[0.06] bg-white/[0.025] text-xl font-black tracking-[-0.04em] text-white/80">{name}</div><div><p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d9b98a]">{type}</p><p className="mt-1 text-[10px] uppercase tracking-[0.12em] text-zinc-600">Selected logo work</p></div></article>)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function FeaturedProjectsPro() {
   return (
     <>
@@ -156,6 +182,7 @@ export default function FeaturedProjectsPro() {
       </div>
     </section>
     <SocialCampaigns />
+    <LogoIdentity />
     </>
   );
 }
