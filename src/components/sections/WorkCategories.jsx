@@ -45,9 +45,9 @@ const GROUPS = [
     title: "Video & Motion",
     intro: "Short-form campaign films, brand storytelling and location-led promotional edits.",
     items: [
-      ["Jaivik Karnataka — Nature & Freshness", "Short-form visual story featuring Bengaluru greenery, local places and a nature-led campaign identity. Source video: Nature_freshness.mp4 (32.6 sec)."],
-      ["Jaivik Mall — Lalbagh", "Location-led promotional film featuring the organic produce store, fresh produce and customer experience. Source video: jaivik mall.mp4 (32.9 sec)."],
-      ["Jaivik Sante", "Short-form film around the Jaivik Karnataka organic farmers market, stalls and shoppers. Source video: jaivik sante.mp4 (14.7 sec)."],
+      ["Jaivik Karnataka — Nature & Freshness", "Short-form visual story featuring Bengaluru greenery, local places and a nature-led campaign identity.", "/videos/Nature_freshness.mp4"],
+      ["Jaivik Mall — Lalbagh", "Location-led promotional film featuring the organic produce store, fresh produce and customer experience.", "/videos/jaivik-mall.mp4"],
+      ["Jaivik Sante", "Short-form film around the Jaivik Karnataka organic farmers market, stalls and shoppers.", "/videos/jaivik-sante.mp4"],
     ],
   },
   {
@@ -78,9 +78,9 @@ function CategorySection({ group }) {
       </header>
       {group.items.length ? (
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {group.items.map(([name, description], index) => (
-            <article key={name} className="group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04]">
-              <div className="mb-8 flex items-center justify-between">
+          {group.items.map(([name, description, videoSrc], index) => (
+            <article key={name} className={`group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04] ${videoSrc ? "min-h-0" : ""}`}>
+              {videoSrc && (\n                <div className="mb-5 overflow-hidden rounded-lg border border-white/10 bg-black">\n                  <video className="aspect-video w-full object-cover" controls preload="metadata" playsInline aria-label={`${name} portfolio video`}>\n                    <source src={videoSrc} type="video/mp4" />\n                    Your browser does not support HTML video.\n                  </video>\n                </div>\n              )}\n              <div className="mb-8 flex items-center justify-between">
                 <span className="font-mono text-[10px] tracking-[0.18em] text-zinc-600">{group.number}.{String(index + 1).padStart(2, "0")}</span>
                 <span aria-hidden="true" className="text-sm text-[#ff453a] transition-transform group-hover:translate-x-1">↗</span>
               </div>
