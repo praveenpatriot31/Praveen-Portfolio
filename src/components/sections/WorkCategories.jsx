@@ -80,7 +80,15 @@ function CategorySection({ group }) {
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {group.items.map(([name, description, videoSrc], index) => (
             <article key={name} className={`group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04] ${videoSrc ? "min-h-0" : ""}`}>
-              {videoSrc && (\n                <div className="mb-5 overflow-hidden rounded-lg border border-white/10 bg-black">\n                  <video className="aspect-video w-full object-cover" controls preload="metadata" playsInline aria-label={`${name} portfolio video`}>\n                    <source src={videoSrc} type="video/mp4" />\n                    Your browser does not support HTML video.\n                  </video>\n                </div>\n              )}\n              <div className="mb-8 flex items-center justify-between">
+              {videoSrc && (
+                <div className="mb-5 overflow-hidden rounded-lg border border-white/10 bg-black">
+                  <video className="aspect-video w-full object-cover" controls preload="metadata" playsInline aria-label={`${name} portfolio video`}>
+                    <source src={videoSrc} type="video/mp4" />
+                    Your browser does not support HTML video.
+                  </video>
+                </div>
+              )}
+              <div className="mb-8 flex items-center justify-between">
                 <span className="font-mono text-[10px] tracking-[0.18em] text-zinc-600">{group.number}.{String(index + 1).padStart(2, "0")}</span>
                 <span aria-hidden="true" className="text-sm text-[#ff453a] transition-transform group-hover:translate-x-1">↗</span>
               </div>
