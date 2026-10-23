@@ -44,7 +44,14 @@ const GROUPS = [
     number: "04",
     title: "Packaging Design",
     intro: "Packaging layouts, product presentation and print-ready artwork.",
-    items: [],
+    items: [
+      ["Nutri Organics — A2 Desi Gir Cow Ghee", "Wrap label design with front, back and side panels, nutrition information and premium red-and-gold branding."],
+      ["Malvi Marshmallows", "Pastel pouch packaging and illustrated product-world presentation."],
+      ["Fiavini — Vegan Gummy Cubes", "Black-and-red stand-up pouch concept with flavour-led product presentation."],
+      ["Coffee Packaging & Identity", "Coffee-themed graphic system and label/packaging direction."],
+      ["Best Pizza", "Pizza box artwork, dieline layout and assembled packaging mockup."],
+      ["Wilson Carton Packaging", "Carton artwork, dieline presentation and 3D pack mockups."],
+    ],
   },
 ];
 
