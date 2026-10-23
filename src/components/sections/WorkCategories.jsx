@@ -40,6 +40,17 @@ const GROUPS = [
     ],
   },
   {
+    id: "video-motion",
+    number: "05",
+    title: "Video & Motion",
+    intro: "Short-form campaign films, brand storytelling and location-led promotional edits.",
+    items: [
+      ["Jaivik Karnataka — Nature & Freshness", "Short-form visual story featuring Bengaluru greenery, local places and a nature-led campaign identity. Source video: Nature_freshness.mp4 (32.6 sec)."],
+      ["Jaivik Mall — Lalbagh", "Location-led promotional film featuring the organic produce store, fresh produce and customer experience. Source video: jaivik mall.mp4 (32.9 sec)."],
+      ["Jaivik Sante", "Short-form film around the Jaivik Karnataka organic farmers market, stalls and shoppers. Source video: jaivik sante.mp4 (14.7 sec)."],
+    ],
+  },
+  {
     id: "packaging",
     number: "04",
     title: "Packaging Design",
@@ -98,9 +109,9 @@ export default function WorkCategories() {
         <header className="mb-10 border-b border-white/10 pb-8">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#ff453a]">Browse by discipline</p>
           <h2 id="work-categories-title" className="text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-6xl">Work, clearly <span className="text-zinc-500">categorised.</span></h2>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-zinc-400">Explore each discipline separately. The lists below organise the projects already represented in the portfolio; new artwork can be added to each category as you share it.</p>
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-zinc-400">Explore each discipline separately. The categories organise brand identity, campaigns, advertising, video and packaging work. Project visuals and playable media can be added as the final assets are hosted.</p>
         </header>
-        <nav aria-label="Portfolio categories" className="mb-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
+        <nav aria-label="Portfolio categories" className="mb-2 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
           {GROUPS.map((group) => (
             <a key={group.id} href={`#${group.id}`} className="group flex min-h-[88px] flex-col justify-between rounded-lg border border-white/10 bg-white/[0.025] p-4 transition-colors hover:border-[#ff453a]/60">
               <span className="font-mono text-[10px] tracking-[0.18em] text-[#ff453a]">{group.number}</span>
