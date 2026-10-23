@@ -11,6 +11,7 @@ import Hero from "./components/hero/HeroClean";
 
 const Showreel = lazy(() => import("./components/sections/Showreel"));
 const FeaturedProjects = lazy(() => import("./components/sections/FeaturedProjectsPro"));
+const WorkCategories = lazy(() => import("./components/sections/WorkCategories"));
 const PaintOPaintsCaseStudy = lazy(() => import("./components/sections/PaintOPaintsCaseStudy"));
 const ManiGroupCaseStudy = lazy(() => import("./components/sections/ManiGroupCaseStudy"));
 const Impact = lazy(() => import("./components/sections/Impact"));
@@ -64,6 +65,7 @@ export default function App() {
         <Suspense fallback={<Loading />}>
           <Showreel />
           <FeaturedProjects />
+          <WorkCategories />
           <PaintOPaintsCaseStudy />
           <ManiGroupCaseStudy />
           <Impact />
