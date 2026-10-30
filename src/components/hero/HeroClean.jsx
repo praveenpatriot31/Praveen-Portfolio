@@ -61,7 +61,7 @@ export default function HeroClean() {
               <a href="#work" className="touch-manipulation inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-6 py-4 text-xs font-bold tracking-[.14em] text-black transition hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808] sm:w-auto sm:px-7 sm:tracking-[.18em]">
                 VIEW SELECTED WORK <ArrowUpRight size={16} aria-hidden="true" />
               </a>
-              <a href="/resume/Praveen_S_Resume.pdf" download className="touch-manipulation inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-4 text-xs font-bold tracking-[.14em] transition hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808] sm:w-auto sm:px-7 sm:tracking-[.18em]">
+              <a href="https://d2ol7oe51mr4n9.cloudfront.net/user_37s6zTAV81uzkNV1i8wZc5DcnsQ/52dcb535-03b1-43fe-b536-5d4be7682118.pdf" target="_blank" rel="noopener noreferrer" className="touch-manipulation inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full border border-white/15 px-6 py-4 text-xs font-bold tracking-[.14em] transition hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808] sm:w-auto sm:px-7 sm:tracking-[.18em]">
                 <Download size={15} aria-hidden="true" /> DOWNLOAD CV
               </a>
             </div>
