@@ -6,6 +6,15 @@ const SKILLS = ["Compositing", "Roto", "Paint Prep", "Integration"];
 
 export default function VfxSlider() {
   const reduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px), (pointer: coarse)");
+    const update = () => setIsMobile(media.matches);
+    update();
+    media.addEventListener?.("change", update);
+    return () => media.removeEventListener?.("change", update);
+  }, []);
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef(null);
@@ -124,11 +133,12 @@ export default function VfxSlider() {
           <video
             ref={afterVideoRef}
             src="/videos/vfx-after.mp4"
-            autoPlay={!reduceMotion}
-            loop={!reduceMotion}
+            autoPlay={!reduceMotion && !isMobile}
+            loop={!reduceMotion && !isMobile}
             muted
+            controls={isMobile}
             playsInline
-            preload="metadata"
+            preload="none"
             className="absolute inset-0 h-full w-full object-cover"
           />
 
