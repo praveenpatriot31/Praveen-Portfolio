@@ -77,9 +77,11 @@ function CategorySection({ group }) {
         <p className="max-w-lg text-sm leading-6 text-zinc-400 md:col-span-4 md:justify-self-end">{group.intro}</p>
       </header>
       {group.items.length ? (
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className={group.id === "video-motion"
+          ? "flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 [scrollbar-width:thin] [scrollbar-color:#52525b_transparent]"
+          : "grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
           {group.items.map(([name, description, videoSrc], index) => (
-            <article key={name} id={name === "Cinematrix" ? "cinematrix" : undefined} className={`group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04] ${videoSrc ? "min-h-0" : ""}`}>
+            <article key={name} id={name === "Cinematrix" ? "cinematrix" : undefined} className={`group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04] ${videoSrc ? "min-h-0" : ""} ${group.id === "video-motion" ? "w-[86%] flex-none snap-start sm:w-[48%] lg:w-[calc(33.333%-0.67rem)]" : ""}`}>
               {videoSrc && (
                 <div className="mb-5 overflow-hidden rounded-lg border border-white/10 bg-black">
                   <video className="aspect-video w-full object-cover" controls preload="none" playsInline aria-label={`${name} portfolio video`}>
