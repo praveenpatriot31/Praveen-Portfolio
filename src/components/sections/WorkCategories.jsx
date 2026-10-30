@@ -83,8 +83,8 @@ function CategorySection({ group }) {
           {group.items.map(([name, description, videoSrc], index) => (
             <article key={name} id={name === "Cinematrix" ? "cinematrix" : undefined} className={`group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04] ${videoSrc ? "min-h-0" : ""} ${group.id === "video-motion" ? "w-full min-w-full flex-none snap-start sm:w-[82%] sm:min-w-0 lg:w-[72%]" : ""}`}>
               {videoSrc && (
-                <div className="mb-5 overflow-hidden rounded-lg border border-white/10 bg-black">
-                  <video width="1920" height="1080" className="aspect-video w-full object-contain" controls preload="none" playsInline aria-label={`${name} portfolio video`}>
+                <div className="mb-5 aspect-video w-full overflow-hidden rounded-lg border border-white/10 bg-black">
+                  <video width="1920" height="1080" className="block h-full w-full object-contain" controls preload="none" playsInline aria-label={`${name} portfolio video`}>
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support HTML video.
                   </video>
