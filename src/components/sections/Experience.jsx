@@ -4,98 +4,100 @@ const EXPERIENCE = [
   {
     id: "01",
     company: "WHOOSH SINGAPORE PTE. LTD.",
-    role: "Creative Visual Designer & AI Automation",
-    period: "2026",
-    location: "Singapore · Freelance",
+    role: "Art Director — Project-Based",
+    period: "Apr 2026 — Present",
+    location: "Singapore",
     summary:
-      "Developed visual concepts, website experiences and business communication assets across brand touchpoints.",
+      "Supporting Whoosh Singapore and Paint-O Paints with art direction, brand-aligned creative assets and multimedia communication.",
     bullets: [
-      "Developed visual concepts, layouts and digital assets across brand touchpoints.",
-      "Designed website experiences aligned with business requirements and brand objectives.",
-      "Created business and marketing collateral for digital communication and promotional requirements.",
-      "Applied AI-assisted workflows and explored automation opportunities for content and production."
+      "Develop visual concepts and brand-aligned creative assets for marketing and promotional campaigns.",
+      "Create design and multimedia materials for digital platforms and advertising activities.",
+      "Contribute to brand consistency across visual communication and multimedia deliverables.",
+      "Support corporate communication requirements with impactful creative content."
     ],
-    tags: ["Visual Design", "Web", "AI-Assisted", "Automation"]
+    tags: ["Art Direction", "Brand Creative", "Campaigns", "Multimedia"]
   },
   {
     id: "02",
     company: "THERMO FISHER SCIENTIFIC",
-    role: "Creative Visual Designer & AI Content Specialist",
+    role: "Creative Visual Designer / AI Content Specialist — Contract",
     period: "Jan 2026 — Apr 2026",
-    location: "Singapore / Remote · Contract",
+    location: "Bengaluru, India",
     summary:
-      "Created visual content for marketing and corporate communication, supporting motion, video and AI-assisted production workflows.",
+      "Developed visual assets and multimedia content within a multinational business environment, combining design expertise with AI-assisted creative production.",
     bullets: [
-      "Developed visual content for marketing and corporate communication.",
-      "Created AI-assisted concepts and generative content for creative workflows.",
-      "Supported motion graphics, video and multimedia production.",
-      "Collaborated with international stakeholders to develop and refine creative outputs."
+      "Developed visual assets and multimedia content for business communication.",
+      "Applied design and AI-assisted workflows to support creative production.",
+      "Created design materials for internal and external communication.",
+      "Supported marketing and product communication through visual and motion content."
     ],
-    tags: ["Visual Design", "Motion", "Video", "AI-Assisted"]
+    tags: ["Visual Design", "AI-Assisted Workflows", "Marketing", "Motion"]
   },
   {
     id: "03",
     company: "SACUMEN",
-    role: "Graphic Designer",
+    role: "Graphic Designer & Motion Graphics Designer",
     period: "2025",
     location: "Bengaluru, India",
     summary:
-      "Designed campaign creatives, promotional materials and presentations across digital and marketing requirements.",
+      "Created graphic design assets and motion graphics for marketing, corporate communication and digital platforms.",
     bullets: [
-      "Created campaign creatives, promotional materials and presentations.",
-      "Translated business requirements into clear visual communication assets.",
-      "Collaborated with stakeholders to refine and deliver creative work.",
-      "Maintained visual consistency across digital and marketing materials."
+      "Created graphic design assets and motion graphics for digital and multimedia communication.",
+      "Applied visual storytelling and animation principles to creative deliverables.",
+      "Designed visual content for marketing, corporate communication and digital platforms.",
+      "Supported brand consistency across communication materials."
     ],
-    tags: ["Brand Design", "Marketing", "Campaigns", "Presentations"]
+    tags: ["Graphic Design", "Motion Graphics", "Visual Storytelling", "Brand Consistency"]
   },
   {
     id: "04",
-    company: "ACUBE CREATIVE",
-    role: "Post Production Artist",
-    period: "Jun 2022 — May 2023",
+    company: "MICROGENESIS CADSOFT LIMITED",
+    role: "Motion Graphics Designer / Adobe Technical Engineer",
+    period: "Jun 2023 — Jun 2024",
     location: "Bengaluru, India",
     summary:
-      "Worked across video editing, motion graphics and post-production projects from production through final delivery.",
+      "Combined motion design and multimedia production with Adobe-related technical responsibilities in creative workflows.",
     bullets: [
-      "Worked on video editing, motion graphics and post-production projects.",
-      "Created visual content for digital platforms, corporate videos and promotions.",
-      "Collaborated with the creative team to deliver high-quality outputs.",
-      "Managed projects from concept to final delivery."
+      "Worked across motion graphics and Adobe-related technical responsibilities.",
+      "Applied creative and technical knowledge to design and multimedia workflows.",
+      "Supported visual content development and technical requirements associated with Adobe products.",
+      "Created motion graphics, animated assets and multimedia content for internal and client projects.",
+      "Collaborated with teams to support smooth creative and technical workflows."
     ],
-    tags: ["Post-Production", "Video", "Motion", "Editing"]
+    tags: ["Motion Graphics", "Adobe", "Multimedia", "Technical Support"]
   },
   {
     id: "05",
-    company: "MICROGENSIS CADSOFT PVT. LTD.",
-    role: "Graphic Designer",
-    period: "Nov 2021 — May 2022",
+    company: "ACUBE CREATION STUDIOS",
+    role: "Video Editor & Camera Operator",
+    period: "Jun 2022 — May 2023",
     location: "Bengaluru, India",
     summary:
-      "Created marketing materials, presentations and digital creatives across web, social media and print.",
+      "Worked across video production and post-production, from camera operation and footage selection to editing and final delivery.",
     bullets: [
-      "Designed marketing materials, presentations and digital creatives.",
-      "Developed visual assets for web, social media and print.",
-      "Ensured brand consistency across creative deliverables.",
-      "Supported concept development and design execution."
+      "Edited video content for creative and multimedia projects.",
+      "Handled camera operations during video production.",
+      "Supported post-production through footage selection, editing and final delivery.",
+      "Created promotional videos, event coverage and digital content for various clients.",
+      "Worked with directors and production teams to achieve the intended visual output."
     ],
-    tags: ["Graphic Design", "Digital", "Print", "Brand Consistency"]
+    tags: ["Video Editing", "Camera Operation", "Post-Production", "Promotional Video"]
   },
   {
     id: "06",
     company: "DIGILEARN SERVICES",
-    role: "Graphic Design Intern",
-    period: "Sep 2020 — Oct 2021",
+    role: "Graphic Design & Video Editing Intern",
+    period: "2019 — 2020",
     location: "Bengaluru, India",
     summary:
-      "Built foundational experience in graphic design and digital content production while supporting senior designers.",
+      "Built foundational experience in graphic design and video editing while supporting digital communication and promotional work.",
     bullets: [
-      "Assisted in creating graphics for digital marketing and social media.",
-      "Worked on layouts, banners and promotional creatives.",
-      "Applied design principles in real-time projects.",
-      "Supported senior designers in daily creative tasks."
+      "Assisted in creating graphic design assets for digital communication.",
+      "Edited video content for multimedia and promotional requirements.",
+      "Developed foundational skills in visual design and post-production.",
+      "Supported the team with creative assets for online and offline use."
     ],
-    tags: ["Graphic Design", "Social", "Layouts", "Digital Content"]
+    tags: ["Graphic Design", "Video Editing", "Digital Content", "Internship"]
   }
 ];
 
@@ -124,7 +126,7 @@ export default function Experience() {
             </h2>
           </div>
           <p className="max-w-md text-sm leading-7 text-zinc-400 lg:col-span-4 lg:justify-self-end">
-            Experience across visual design, video, motion, post-production and AI-assisted creative workflows, including work with Singapore-based teams.
+            5+ years across art direction, brand communication, graphic design, motion graphics, video production and AI-assisted creative workflows.
           </p>
         </header>
 
