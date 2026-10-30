@@ -238,3 +238,85 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* Portfolio-wide interaction and responsive polish */
+@layer base {
+  :root {
+    color-scheme: dark;
+    scrollbar-color: #393939 #080808;
+    scrollbar-width: thin;
+  }
+
+  html {
+    scroll-padding-top: 1.5rem;
+  }
+
+  body {
+    min-height: 100vh;
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(255, 69, 58, 0.045), transparent 48rem);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border: 3px solid #080808;
+    border-radius: 999px;
+    background: #393939;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ff453a;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  [role="button"]:focus-visible,
+  [role="slider"]:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    a,
+    button {
+      transition-timing-function: cubic-bezier(0.2, 0.75, 0.25, 1);
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --page-pad: 1.125rem;
+    --section-y: 4.25rem;
+  }
+
+  h1 {
+    letter-spacing: -0.045em;
+    overflow-wrap: anywhere;
+  }
+
+  main section {
+    scroll-margin-top: 0.75rem;
+  }
+
+  video {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    background-image: none;
+  }
+}

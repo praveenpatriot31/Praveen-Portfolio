@@ -49,6 +49,7 @@ export default function App() {
 
     return () => {
       cancelAnimationFrame(frameId);
+      lenis.off("scroll", ScrollTrigger.update);
       lenis.destroy();
     };
   }, []);
