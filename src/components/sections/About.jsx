@@ -13,7 +13,7 @@ export default function About() {
     <section id="about" className="border-t border-white/[0.06] bg-[#080808] px-6 py-24 text-white md:px-12 md:py-28 lg:px-16 lg:py-32 xl:px-20" aria-labelledby="about-title">
       <div className="mx-auto grid max-w-[1440px] items-stretch gap-8 lg:grid-cols-12 lg:gap-12">
         <div className="relative min-h-[420px] overflow-hidden rounded-[18px] lg:col-span-5 lg:min-h-[560px]">
-          <img src="/images/about.jpg" alt="Portrait used for the About section" className="h-full w-full object-cover object-center" loading="lazy" />
+          <img src="/images/about.jpg" alt="Portrait of Praveen S." decoding="async" className="h-full w-full object-cover object-center" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
           <p className="absolute bottom-6 left-6 text-[10px] font-semibold uppercase tracking-[0.22em] text-white/70">More than just visuals.</p>
         </div>
