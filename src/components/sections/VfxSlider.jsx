@@ -149,11 +149,11 @@ export default function VfxSlider() {
             <video
               ref={beforeVideoRef}
               src="/videos/vfx-before.mp4"
-              autoPlay={!reduceMotion}
-              loop={!reduceMotion}
+              autoPlay={!reduceMotion && !isMobile}
+              loop={!reduceMotion && !isMobile}
               muted
               playsInline
-              preload="metadata"
+              preload="none"
               className="h-full w-full object-cover"
               style={{ width: containerRef.current ? `${containerRef.current.offsetWidth}px` : "100%" }}
             />
