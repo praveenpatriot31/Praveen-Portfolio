@@ -8,6 +8,12 @@ const Loader = memo(() => {
   useEffect(() => {
     if (!loading) return undefined;
 
+    // Do not hold the first screen behind an animated loader on mobile.
+    if (window.matchMedia("(max-width: 767px), (pointer: coarse)").matches) {
+      setLoading(false);
+      return undefined;
+    }
+
     const previousBodyOverflow = document.body.style.overflow;
     const previousDocumentOverflow = document.documentElement.style.overflow;
 
@@ -27,7 +33,7 @@ const Loader = memo(() => {
       release();
     } else {
       window.addEventListener('load', release, { once: true });
-      safetyTimer = setTimeout(release, 4000);
+      safetyTimer = setTimeout(release, 1800);
     }
 
     return () => {

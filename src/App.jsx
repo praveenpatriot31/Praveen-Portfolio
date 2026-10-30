@@ -34,7 +34,9 @@ function Loading() {
 export default function App() {
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) return undefined;
+    const lowPowerInput = window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
+    // Native scrolling is smoother and cheaper on phones; keep Lenis for desktop pointers only.
+    if (reduceMotion || lowPowerInput) return undefined;
 
     const lenis = new Lenis({ smoothWheel: true });
     let frameId;
