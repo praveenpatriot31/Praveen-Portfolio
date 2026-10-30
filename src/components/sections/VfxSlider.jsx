@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
 import { ArrowLeftRight, Check, MousePointer2 } from "lucide-react";
 
 const SKILLS = ["Compositing", "Roto", "Paint Prep", "Integration"];
 
 export default function VfxSlider() {
+  const reduceMotion = useReducedMotion();
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef(null);
@@ -122,8 +124,8 @@ export default function VfxSlider() {
           <video
             ref={afterVideoRef}
             src="/videos/vfx-after.mp4"
-            autoPlay
-            loop
+            autoPlay={!reduceMotion}
+            loop={!reduceMotion}
             muted
             playsInline
             preload="metadata"
@@ -137,8 +139,8 @@ export default function VfxSlider() {
             <video
               ref={beforeVideoRef}
               src="/videos/vfx-before.mp4"
-              autoPlay
-              loop
+              autoPlay={!reduceMotion}
+              loop={!reduceMotion}
               muted
               playsInline
               preload="metadata"
