@@ -1,6 +1,6 @@
 import React from "react";
 
-const CV_PATH = "/resume/Praveen_S_Resume.pdf";
+const CV_PATH = "https://d2ol7oe51mr4n9.cloudfront.net/user_37s6zTAV81uzkNV1i8wZc5DcnsQ/52dcb535-03b1-43fe-b536-5d4be7682118.pdf";
 
 export default function ContactChannels() {
   return (
