@@ -31,13 +31,20 @@ export default function HeroClean() {
           <div className="hidden items-center gap-8 text-[11px] font-semibold uppercase tracking-[.22em] text-white/55 md:flex">
             <a href="#work" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Work</a>
             <a href="#social-campaigns-title" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Campaigns</a>
-            <a href="#logo-identity" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Identity</a>
+            <a href="#branding" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Identity</a>
             <a href="#experience" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Experience</a>
             <a href="#contact" className="transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080808]">Contact</a>
           </div>
           <a href="#contact" className="touch-manipulation rounded-full border border-white/15 px-3 py-2 text-[9px] font-bold uppercase tracking-[.16em] transition hover:border-white/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] sm:px-4 sm:text-[10px] sm:tracking-[.2em]">
             Available for work
           </a>
+        </nav>
+        <nav className="mt-4 flex gap-5 overflow-x-auto border-b border-white/10 pb-3 text-[10px] font-semibold uppercase tracking-[.16em] text-white/55 md:hidden" aria-label="Mobile primary navigation">
+          <a href="#work" className="shrink-0 py-1 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a]">Work</a>
+          <a href="#social-campaigns" className="shrink-0 py-1 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a]">Campaigns</a>
+          <a href="#branding" className="shrink-0 py-1 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a]">Identity</a>
+          <a href="#experience" className="shrink-0 py-1 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a]">Experience</a>
+          <a href="#contact" className="shrink-0 py-1 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a]">Contact</a>
         </nav>
 
         <div id="top" className="grid items-center gap-10 py-10 sm:gap-12 sm:py-16 lg:grid-cols-[1.08fr_.92fr] lg:gap-16 lg:py-20">
