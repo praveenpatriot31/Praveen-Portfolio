@@ -20,26 +20,11 @@ const Loader = memo(() => {
     document.body.style.overflow = 'hidden';
     document.documentElement.style.overflow = 'hidden';
 
-    let releaseTimer;
-    let safetyTimer;
-
-    const release = () => {
-      clearTimeout(safetyTimer);
-      clearTimeout(releaseTimer);
-      releaseTimer = setTimeout(() => setLoading(false), 500);
-    };
-
-    if (document.readyState === 'complete') {
-      release();
-    } else {
-      window.addEventListener('load', release, { once: true });
-      safetyTimer = setTimeout(release, 1800);
-    }
+    // Keep the intro brief; page usability must not depend on every asset finishing.
+    const releaseTimer = window.setTimeout(() => setLoading(false), 450);
 
     return () => {
-      window.removeEventListener('load', release);
       clearTimeout(releaseTimer);
-      clearTimeout(safetyTimer);
       document.body.style.overflow = previousBodyOverflow;
       document.documentElement.style.overflow = previousDocumentOverflow;
     };
