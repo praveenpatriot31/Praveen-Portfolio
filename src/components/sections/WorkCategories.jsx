@@ -66,6 +66,30 @@ const GROUPS = [
   },
 ];
 
+function CampaignArtwork({ name, groupId, index }) {
+  const themes = {
+    branding: ["from-amber-200 via-orange-400 to-red-700", "from-zinc-100 via-stone-300 to-zinc-600", "from-fuchsia-500 via-purple-700 to-zinc-950"],
+    "social-campaigns": ["from-red-600 via-orange-500 to-amber-300", "from-sky-300 via-blue-600 to-indigo-950", "from-emerald-300 via-teal-600 to-zinc-950"],
+    "ad-design": ["from-lime-300 via-green-500 to-emerald-950", "from-violet-400 via-indigo-600 to-zinc-950", "from-rose-300 via-red-500 to-orange-950"],
+    packaging: ["from-yellow-100 via-amber-300 to-red-700", "from-pink-200 via-fuchsia-300 to-purple-700", "from-zinc-100 via-neutral-300 to-zinc-800"],
+  };
+  const theme = (themes[groupId] || themes.branding)[index % (themes[groupId] || themes.branding).length];
+  const words = name.replace(/ — /g, " / ").split(/\s+/).filter(Boolean);
+  return (
+    <div className={`relative mb-5 flex aspect-[4/3] w-full items-end overflow-hidden rounded-lg bg-gradient-to-br ${theme} p-4 sm:p-5`} aria-label={`Graphic preview for ${name}`} role="img">
+      <div aria-hidden="true" className="absolute -right-8 -top-8 h-40 w-40 rounded-full border-[22px] border-white/20 sm:h-48 sm:w-48" />
+      <div aria-hidden="true" className="absolute right-8 top-8 h-20 w-20 rotate-12 border border-white/50 sm:h-28 sm:w-28" />
+      <div aria-hidden="true" className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-black/15 to-transparent" />
+      <div className="relative z-10 max-w-full">
+        <p className="mb-2 font-mono text-[9px] font-bold uppercase tracking-[0.24em] text-white/80">CREATIVE CAMPAIGN / {String(index + 1).padStart(2, "0")}</p>
+        <p className="max-w-full break-words text-2xl font-black uppercase leading-[0.88] tracking-[-0.06em] text-white drop-shadow sm:text-3xl lg:text-4xl">{words.slice(0, 5).join(" ")}</p>
+        <div className="mt-3 h-1 w-12 bg-white/90" />
+      </div>
+      <span aria-hidden="true" className="absolute right-3 top-3 rounded-full border border-white/40 px-2 py-1 font-mono text-[9px] tracking-widest text-white">PREVIEW</span>
+    </div>
+  );
+}
+
 function CategorySection({ group }) {
   return (
     <section id={group.id} className="scroll-mt-24 border-t border-white/[0.08] py-14 sm:py-20" aria-labelledby={`${group.id}-title`}>
@@ -82,13 +106,15 @@ function CategorySection({ group }) {
           : "grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
           {group.items.map(([name, description, videoSrc], index) => (
             <article key={name} id={name === "Cinematrix" ? "cinematrix" : undefined} className={`group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04] ${videoSrc ? "min-h-0" : ""} ${group.id === "video-motion" ? "w-[78vw] min-w-[78vw] max-w-[320px] flex-none snap-start sm:w-[280px] sm:min-w-[280px] lg:w-[300px]" : ""}`}>
-              {videoSrc && (
+              {videoSrc ? (
                 <div className="mb-5 aspect-[9/16] w-full overflow-hidden rounded-lg border border-white/10 bg-black">
                   <video width="1920" height="1080" className="block h-full w-full object-cover" controls preload="metadata" playsInline aria-label={`${name} portfolio video`}>
                     <source src={videoSrc} type="video/mp4" />
                     Your browser does not support HTML video.
                   </video>
                 </div>
+              ) : (
+                <CampaignArtwork name={name} groupId={group.id} index={index} />
               )}
               <div className="mb-8 flex items-center justify-between">
                 <span className="font-mono text-[10px] tracking-[0.18em] text-zinc-600">{group.number}.{String(index + 1).padStart(2, "0")}</span>
@@ -119,7 +145,7 @@ export default function WorkCategories() {
         <header className="mb-10 border-b border-white/10 pb-8">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#ff453a]">Browse by discipline</p>
           <h2 id="work-categories-title" className="text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-6xl">Work, clearly <span className="text-zinc-500">categorised.</span></h2>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-zinc-400">Explore each discipline separately. The categories organise brand identity, campaigns, advertising, video and packaging work. Project visuals and playable media can be added as the final assets are hosted.</p>
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-zinc-400">Explore each discipline separately. The categories organise brand identity, campaigns, advertising, video and packaging work. Campaigns and projects are presented with visual artwork previews, alongside playable video where available.</p>
         </header>
         <nav aria-label="Portfolio categories" className="mb-2 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
           {GROUPS.map((group) => (
