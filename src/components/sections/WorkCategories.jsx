@@ -106,7 +106,7 @@ function CategorySection({ group }) {
           ? "flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain pb-6 pr-2 [scrollbar-width:thin] [scrollbar-color:#52525b_transparent]"
           : "grid gap-3 sm:grid-cols-2 lg:grid-cols-3"}>
           {group.items.map(([name, description, videoSrc], index) => (
-            <article key={name} id={name === "Cinematrix" ? "cinematrix" : undefined} className={`group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04] ${videoSrc ? "min-h-0" : ""} ${group.id === "video-motion" ? "w-[88vw] min-w-[88vw] max-w-[720px] flex-none snap-start sm:w-[72vw] sm:min-w-[72vw] lg:w-[min(72vw,720px)] lg:min-w-[min(72vw,720px)]" : ""}`}>
+            <article key={name} id={name === "Cinematrix" ? "cinematrix" : undefined} className={`group flex min-h-[148px] flex-col justify-between rounded-xl border border-white/[0.10] bg-white/[0.025] p-5 transition-colors duration-300 hover:border-white/25 hover:bg-white/[0.04] ${videoSrc ? "min-h-0" : ""} ${group.id === "video-motion" ? "w-[calc(100vw-3rem)] min-w-[calc(100vw-3rem)] max-w-[960px] flex-none snap-start sm:w-[72vw] sm:min-w-[72vw] lg:w-[min(72vw,960px)] lg:min-w-[min(72vw,960px)]" : ""}`}>
               {videoSrc ? (
                 <div className="mb-5 aspect-video w-full overflow-hidden rounded-lg border border-white/10 bg-black">
                   <video width="1920" height="1080" className="block h-full w-full object-contain" controls preload="none" playsInline aria-label={`${name} portfolio video`}>
