@@ -128,12 +128,12 @@ function ProjectArtwork({ visual }) {
 
 export default function FeaturedProjectsPro() {
   return (
-    <section id="work" className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] px-6 py-24 text-white md:px-12 md:py-28 lg:px-16 xl:px-20" aria-labelledby="selected-work-title">
+    <section id="work" className="relative overflow-hidden border-t border-white/[0.06] bg-[#050505] px-5 py-16 text-white sm:px-6 md:px-12 md:py-20 lg:px-16 xl:px-20" aria-labelledby="selected-work-title">
       <div className="mx-auto max-w-[1440px]">
-        <header className="mb-12 flex flex-col justify-between gap-7 border-b border-white/10 pb-8 md:flex-row md:items-end lg:mb-14">
+        <header className="mb-8 flex flex-col justify-between gap-5 border-b border-white/10 pb-6 sm:gap-7 md:flex-row md:items-end lg:mb-10 lg:pb-8">
           <div>
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#ff453a]">Portfolio / Selected work</p>
-            <h2 id="selected-work-title" className="max-w-4xl text-5xl font-black uppercase leading-[0.9] tracking-[-0.055em] sm:text-6xl lg:text-7xl">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-[#ff453a]">Portfolio / Selected Work</p>
+            <h2 id="selected-work-title" className="max-w-4xl text-5xl font-black uppercase leading-[0.86] tracking-[-0.06em] sm:text-6xl lg:text-7xl">
               Work that<br className="hidden sm:block" /> makes a mark<span className="text-zinc-500">.</span>
             </h2>
           </div>
@@ -142,29 +142,29 @@ export default function FeaturedProjectsPro() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:gap-5">
           {PROJECTS.map((project, index) => (
             <a
               key={project.id}
               id={project.id === "01" ? "make-changes" : undefined}
               href={project.href}
-              className="group block rounded-[18px] border border-white/[0.10] bg-white/[0.02] p-2.5 transition-[border-color,background-color,transform] duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] motion-reduce:transform-none"
+              className="group block rounded-xl border border-white/[0.10] bg-white/[0.02] p-2 sm:rounded-2xl sm:p-2.5 transition-[border-color,background-color,transform] duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] motion-reduce:transform-none"
               aria-label={`${project.title}: ${project.linkLabel}`}
             >
-              <div className="relative overflow-hidden rounded-[12px]">
+              <div className="relative overflow-hidden rounded-lg sm:rounded-xl">
                 <div className="transition-transform duration-500 ease-out group-hover:scale-[1.015] motion-reduce:transform-none">
                   <ProjectArtwork visual={project.visual} />
                 </div>
-                <span className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/30 text-white backdrop-blur-sm transition-colors duration-300 group-hover:bg-[#ff453a]">
+                <span className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full sm:h-10 sm:w-10 border border-white/20 bg-black/30 text-white backdrop-blur-sm transition-colors duration-300 group-hover:bg-[#ff453a]">
                   <ArrowUpRight size={18} aria-hidden="true" />
                 </span>
-                <span className="absolute left-4 top-4 rounded-full border border-black/10 bg-white/80 px-3 py-1.5 text-[9px] font-bold tracking-[0.16em] text-black/70 backdrop-blur-sm">{project.id}</span>
+                <span className="absolute left-3 top-3 rounded-full sm:left-4 sm:top-4 border border-black/10 bg-white/80 px-3 py-1.5 text-[9px] font-bold tracking-[0.16em] text-black/70 backdrop-blur-sm">{project.id}</span>
               </div>
-              <div className="flex flex-col gap-4 px-3 pb-3 pt-5 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
+              <div className="flex flex-col gap-3 px-2 pb-2 pt-4 sm:gap-4 sm:px-3 sm:pb-3 sm:pt-5 sm:flex-row sm:items-end sm:justify-between sm:gap-6">
                 <div>
                   <p className="text-[10px] font-semibold uppercase leading-5 tracking-[0.16em] text-[#ff655c]">{project.category}</p>
-                  <h3 className="mt-2 text-xl font-bold tracking-[-0.035em] transition-colors duration-300 group-hover:text-white sm:text-2xl">{project.title}</h3>
-                  <p className="mt-2 max-w-xl text-sm leading-6 text-zinc-400">{project.description}</p>
+                  <h3 className="mt-2 text-lg font-bold tracking-[-0.035em] transition-colors duration-300 group-hover:text-white sm:text-xl lg:text-2xl">{project.title}</h3>
+                  <p className="mt-2 max-w-xl text-xs leading-5 text-zinc-400 sm:text-sm sm:leading-6">{project.description}</p>
                 </div>
                 <span className="inline-flex shrink-0 items-center gap-2 pb-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white/65 transition-colors group-hover:text-white">
                   {project.linkLabel} <ArrowDownRight size={14} aria-hidden="true" />
@@ -174,7 +174,7 @@ export default function FeaturedProjectsPro() {
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs leading-6 text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5 text-xs leading-6 text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
           <span>Selected work across identity, campaign design, retail communication and VFX.</span>
           <span className="text-zinc-600">Explore each discipline below for supporting project material.</span>
         </div>
