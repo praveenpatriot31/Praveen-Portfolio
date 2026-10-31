@@ -7,8 +7,8 @@ const PROJECTS = [
     title: "Make Changes",
     category: "Brand identity · Graphic design · Campaigns",
     description: "Creative campaign thinking and visual communication, organised around a clear, confident brand voice.",
-    href: "#social-campaigns",
-    linkLabel: "Browse campaign work",
+    href: "#make-changes",
+    linkLabel: "Explore project",
     visual: "make-changes",
     eyebrow: "Ideas into impact",
   },
@@ -109,8 +109,9 @@ function ProjectArtwork({ visual }) {
   }
 
   return (
-    <div className="relative h-full min-h-[250px] overflow-hidden bg-[#e7ff4f] text-[#151515] sm:min-h-[320px]">
+    <div className="relative h-full min-h-[280px] overflow-hidden bg-[#e7ff4f] text-[#151515] sm:min-h-[360px]">
       <div className="absolute -right-10 -top-20 h-64 w-64 rotate-12 border-[24px] border-[#151515]/10 sm:h-80 sm:w-80" />
+      <div className="absolute right-[18%] top-[18%] h-28 w-28 rotate-12 border-[12px] border-[#151515]/15 sm:h-40 sm:w-40" />
       <div className="absolute bottom-0 right-0 h-24 w-24 rounded-tl-full bg-[#ff453a] sm:h-32 sm:w-32" />
       <div className="absolute left-6 top-7 sm:left-10 sm:top-10">
         <p className="text-[9px] font-bold uppercase tracking-[0.24em] sm:text-[10px]">Identity · Campaign · Design</p>
@@ -145,6 +146,7 @@ export default function FeaturedProjectsPro() {
           {PROJECTS.map((project, index) => (
             <a
               key={project.id}
+              id={project.id === "01" ? "make-changes" : undefined}
               href={project.href}
               className="group block rounded-[18px] border border-white/[0.10] bg-white/[0.02] p-2.5 transition-[border-color,background-color,transform] duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] motion-reduce:transform-none"
               aria-label={`${project.title}: ${project.linkLabel}`}
