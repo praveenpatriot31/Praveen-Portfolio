@@ -1,8 +1,4 @@
-import React, { Suspense, lazy, useEffect } from "react";
-import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import React, { Suspense, lazy } from "react";
 
 import Loader from "./components/layout/Loader";
 import Footer from "./components/layout/Footer";
@@ -32,30 +28,6 @@ function Loading() {
 }
 
 export default function App() {
-  useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const lowPowerInput = window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
-    // Native scrolling is smoother and cheaper on phones; keep Lenis for desktop pointers only.
-    if (reduceMotion || lowPowerInput) return undefined;
-
-    const lenis = new Lenis({ smoothWheel: true });
-    let frameId;
-
-    const raf = (time) => {
-      lenis.raf(time);
-      frameId = requestAnimationFrame(raf);
-    };
-
-    frameId = requestAnimationFrame(raf);
-    lenis.on("scroll", ScrollTrigger.update);
-
-    return () => {
-      cancelAnimationFrame(frameId);
-      lenis.off("scroll", ScrollTrigger.update);
-      lenis.destroy();
-    };
-  }, []);
-
   return (
     <div className="overflow-x-hidden bg-black text-white">
       <a href="#main-content" className="sr-only fixed left-4 top-4 z-[10000] rounded bg-white px-4 py-3 text-sm font-semibold text-black focus:not-sr-only">
