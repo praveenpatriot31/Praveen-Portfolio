@@ -4,36 +4,26 @@ import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 const PROJECTS = [
   {
     id: "01",
-    title: "Make Changes",
-    category: "Brand identity · Graphic design · Campaigns",
-    description: "Creative campaign thinking and visual communication, organised around a clear, confident brand voice.",
-    href: "#make-changes",
-    linkLabel: "Explore project",
-    visual: "make-changes",
-    eyebrow: "Ideas into impact",
-  },
-  {
-    id: "02",
     title: "Paint-O Paints Singapore",
     category: "Paint campaigns · Product visuals · Marketing",
     description: "Colour-led brand communication and marketing creative for a paint brand, with clarity across product and campaign touchpoints.",
-    href: "#paint-o",
+    href: "#branding",
     linkLabel: "View brand case study",
     visual: "paint-o",
     eyebrow: "Colour in every layer",
   },
   {
-    id: "03",
+    id: "02",
     title: "Mani Sports & Gifts",
     category: "Retail branding · Promotions · Social creative",
     description: "Promotional communication for a sports and gifts business, spanning product-led graphics and brand-facing creative.",
-    href: "#mani-group",
+    href: "#branding",
     linkLabel: "View brand case study",
     visual: "mani",
     eyebrow: "Made to be remembered",
   },
   {
-    id: "04",
+    id: "03",
     title: "Cinematrix VFX Studio",
     category: "VFX · Motion graphics · Video · Post-production",
     description: "A screen-focused creative practice built around cinematic imagery, motion-led storytelling and finishing craft.",
@@ -138,7 +128,7 @@ export default function FeaturedProjectsPro() {
             </h2>
           </div>
           <p className="max-w-md text-sm leading-6 text-zinc-400 sm:text-base sm:leading-7">
-            Brand communication, campaign design and cinematic craft across four selected creative practices.
+            Selected work across paint brand communication, retail promotions and cinematic VFX craft.
           </p>
         </header>
 
@@ -146,7 +136,7 @@ export default function FeaturedProjectsPro() {
           {PROJECTS.map((project, index) => (
             <a
               key={project.id}
-              id={project.id === "01" ? "make-changes" : undefined}
+              id={project.id === "01" ? "paint-o" : project.id === "02" ? "mani-group" : undefined}
               href={project.href}
               className="group block rounded-xl border border-white/[0.10] bg-white/[0.02] p-2 sm:rounded-2xl sm:p-2.5 transition-[border-color,background-color,transform] duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] motion-reduce:transform-none"
               aria-label={`${project.title}: ${project.linkLabel}`}
@@ -175,7 +165,7 @@ export default function FeaturedProjectsPro() {
         </div>
 
         <div className="mt-6 flex flex-col gap-2 border-t border-white/10 pt-5 text-xs leading-6 text-zinc-500 sm:flex-row sm:items-center sm:justify-between">
-          <span>Selected work across identity, campaign design, retail communication and VFX.</span>
+          <span>Three selected projects across brand communication, retail creative and VFX.</span>
           <span className="text-zinc-600">Explore each discipline below for supporting project material.</span>
         </div>
       </div>
