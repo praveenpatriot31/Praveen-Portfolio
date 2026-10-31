@@ -16,9 +16,9 @@ const PROJECTS = [
     id: "02",
     title: "Mani Sports & Gifts",
     category: "Retail branding · Promotions · Social creative",
-    description: "Promotional communication for a sports and gifts business, spanning product-led graphics and brand-facing creative.",
-    href: "#branding",
-    linkLabel: "View brand case study",
+    description: "Sports and gifts brand creative, with project work featured on Instagram.",
+    href: "https://www.instagram.com/p/Db8vsFSysS-/?hl=am-et",
+    linkLabel: "View Instagram project",
     visual: "mani",
     eyebrow: "Made to be remembered",
   },
@@ -138,6 +138,8 @@ export default function FeaturedProjectsPro() {
               key={project.id}
               id={project.id === "01" ? "paint-o" : project.id === "02" ? "mani-group" : undefined}
               href={project.href}
+              target={project.href.startsWith("https://") ? "_blank" : undefined}
+              rel={project.href.startsWith("https://") ? "noreferrer" : undefined}
               className="group block rounded-xl border border-white/[0.10] bg-white/[0.02] p-2 sm:rounded-2xl sm:p-2.5 transition-[border-color,background-color,transform] duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.035] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ff453a] motion-reduce:transform-none"
               aria-label={`${project.title}: ${project.linkLabel}`}
             >
