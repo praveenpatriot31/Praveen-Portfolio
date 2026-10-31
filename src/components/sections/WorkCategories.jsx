@@ -40,17 +40,6 @@ const GROUPS = [
     ],
   },
   {
-    id: "video-motion",
-    number: "05",
-    title: "Video & Motion",
-    intro: "Short-form campaign films, brand storytelling and location-led promotional edits.",
-    items: [
-      ["Jaivik Karnataka — Nature & Freshness", "Short-form visual story featuring Bengaluru greenery, local places and a nature-led campaign identity.", "/videos/Nature_freshness.mp4"],
-      ["Jaivik Mall — Lalbagh", "Location-led promotional film featuring the organic produce store, fresh produce and customer experience.", "/videos/jaivik-mall.mp4"],
-      ["Jaivik Sante", "Short-form film around the Jaivik Karnataka organic farmers market, stalls and shoppers.", "/videos/jaivik-sante.mp4"],
-    ],
-  },
-  {
     id: "packaging",
     number: "04",
     title: "Packaging Design",
@@ -64,6 +53,18 @@ const GROUPS = [
       ["Wilson Carton Packaging", "Carton artwork, dieline presentation and 3D pack mockups."],
     ],
   },
+  {
+    id: "video-motion",
+    number: "05",
+    title: "Video & Motion",
+    intro: "Short-form campaign films, brand storytelling and location-led promotional edits.",
+    items: [
+      ["Jaivik Karnataka — Nature & Freshness", "Short-form visual story featuring Bengaluru greenery, local places and a nature-led campaign identity.", "/videos/Nature_freshness.mp4"],
+      ["Jaivik Mall — Lalbagh", "Location-led promotional film featuring the organic produce store, fresh produce and customer experience.", "/videos/jaivik-mall.mp4"],
+      ["Jaivik Sante", "Short-form film around the Jaivik Karnataka organic farmers market, stalls and shoppers.", "/videos/jaivik-sante.mp4"],
+    ],
+  },
+
 ];
 
 function CampaignArtwork({ name, groupId, index }) {
@@ -144,8 +145,8 @@ export default function WorkCategories() {
       <div className="mx-auto max-w-[1440px]">
         <header className="mb-10 border-b border-white/10 pb-8">
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-[#ff453a]">Browse by discipline</p>
-          <h2 id="work-categories-title" className="text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-6xl">Work, clearly <span className="text-zinc-500">categorised.</span></h2>
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-zinc-400">Explore each discipline separately. The categories organise brand identity, campaigns, advertising, video and packaging work. Campaigns and projects are presented with visual artwork previews, alongside playable video where available.</p>
+          <h2 id="work-categories-title" className="text-4xl font-black uppercase leading-[0.92] tracking-[-0.05em] sm:text-5xl lg:text-6xl">Portfolio <span className="text-zinc-500">/ Selected Work.</span></h2>
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-zinc-400">A curated selection of brand identity, social campaigns, advertising, packaging and motion work. Browse by discipline to see the range of creative thinking, visual systems and campaign execution.</p>
         </header>
         <nav aria-label="Portfolio categories" className="mb-2 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-5">
           {GROUPS.map((group) => (
